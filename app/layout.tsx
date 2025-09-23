@@ -21,7 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body>
-        <nav className="fixed top-0 left-0 w-full z-10 bg-transparent text-white p-4 backdrop-blur-sm">
+        <nav className="fixed top-0 left-0 w-full z-8 bg-transparent text-white p-4">
           <div className="max-w-screen-xl mx-auto flex justify-between items-center">
 
             <div className="text-2xl font-bold">Jason Sacerio</div>
@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                     <img src="/github.svg" alt="GitHub" className="h-6 w-6 text-white" />
                      </a>
                      <a
-                      href="https://linked.in/your-username"
+                      href="https://www.linkedin.com/in/sacerio417/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:opacity-70 transition-opacity"
@@ -52,7 +52,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                       <img src="/linkedin.svg" alt="Linkedin" className="h-6 w-6" />
                     </a>
                     <a
-                      href="https://github.com/your-username"
+                      href="/resume.pdf"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="hover:opacity-70 transition-opacity"
