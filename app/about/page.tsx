@@ -1,3 +1,5 @@
+import Tech from "@/app/components/skills";
+
 export default function About() {
     return (
         <div className="min-h-screen bg-[#ede8d0] flex flex-col items-center justify-start relative">
@@ -16,6 +18,7 @@ export default function About() {
                         frameworks/libraries: django, tailwind, mongodb, pandas, numpy, matplotlib <br />
                         developer tools: git, docker, jupyter notebook, vsc, jetbrains, kubernetes, ida pro, eclipse, vercel
                     </p>
+                <Tech />
             </div>
         </div>
     );
