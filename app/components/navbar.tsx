@@ -13,10 +13,10 @@ export default function Navbar() {
                 <div className="text-2xl font-bold">Jason Sacerio</div>
 
                 <div className="hidden md:flex space-x-6 absolute left-1/2 transform -translate-x-1/2">
-                    <a href="/" className="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[4px] after:w-0 after:bg-[#1e3b24] after:transition-all after:duration-300 hover:after:w-full">Home</a>
-                    <a href="/about" className="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[4px] after:w-0 after:bg-[#1e3b24] after:transition-all after:duration-300 hover:after:w-full">About</a>
-                    <a href="/career" className="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[4px] after:w-0 after:bg-[#1e3b24] after:transition-all after:duration-300 hover:after:w-full">Career</a>
-                    <a href="/projects" className="relative after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-[4px] after:w-0 after:bg-[#1e3b24] after:transition-all after:duration-300 hover:after:w-full">Projects</a>
+                    <a href="/" className="relative after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:h-[4px] after:w-full after:bg-[#1e3b24] after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100 after:-translate-x-1/2">Home</a>
+                    <a href="/about" className="relative after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:h-[4px] after:w-full after:bg-[#1e3b24] after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100 after:-translate-x-1/2">About</a>
+                    <a href="/career" className="relative after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:h-[4px] after:w-full after:bg-[#1e3b24] after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100 after:-translate-x-1/2">Career</a>
+                    <a href="/projects" className="relative after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:h-[4px] after:w-full after:bg-[#1e3b24] after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100 after:-translate-x-1/2">Projects</a>
                 </div>
 
                 <div className="flex items-center gap-4">

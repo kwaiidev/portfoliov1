@@ -1,7 +1,7 @@
 export default function About() {
     return (
         <div className="min-h-screen bg-[#ede8d0] flex flex-col items-center justify-start relative">
-            <div className="text-center max-w-4xl mt-40">
+            <div className="text-center max-w-4xl mt-25">
                 <h1 className="text-3xl font-bold text-[#1e3b24] mb-4">
                     about me
                 </h1>
