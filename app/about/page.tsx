@@ -13,11 +13,6 @@ export default function About() {
                         My technical focus spans systems programming, hardware interfacing, and performance optimization. I’m passionate about building software that combines efficiency with practical problem-solving.
                     </p>
                 <h1 className="text-3xl font-bold text-[#1e3b24]  mb-4 mt-20">skills</h1>
-                    <p className="text-black text-lg">
-                        languages: c, c++, rust, python, java, javascript, typescript, sql, html/css <br />
-                        frameworks/libraries: django, tailwind, mongodb, pandas, numpy, matplotlib <br />
-                        developer tools: git, docker, jupyter notebook, vsc, jetbrains, kubernetes, ida pro, eclipse, vercel
-                    </p>
                 <Tech />
             </div>
         </div>
