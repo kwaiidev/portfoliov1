@@ -3,10 +3,11 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import Tech from './components/skills';
 import Timeline from './components/timeline';
+import ImageCarousel from './components/ImageCarousel';
+import FunFactsCarousel from './components/FunFactsCarousel';
 
 export default function Home() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -27,34 +28,60 @@ export default function Home() {
   // Carousel data
   const carouselSlides = [
     {
-      title: "Systems Programming",
-      description: "Low-level optimization and hardware interfacing",
-      icon: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+      title: "Flanigans",
+      description: "check",
+      image: "/adriandi.jpg",
+      tooltip: "My girlfriend and I at our (my) favorite restaurant, Flanigans"
     },
     {
       title: "Problem Solving",
       description: "Creative solutions to complex challenges",
-      icon: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+      image: "/images/problem-solving.jpg",
+      tooltip: "Approaching complex challenges with creative thinking, systematic analysis, and innovative solutions that push technological boundaries."
     },
     {
       title: "Innovation",
       description: "Exploring new technologies and approaches",
-      icon: "M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+      image: "/images/innovation.jpg",
+      tooltip: "Exploring cutting-edge technologies, experimenting with new approaches, and building solutions that shape the future of software development."
     }
   ];
 
-  // Carousel navigation functions
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
-  };
+  // Fun facts data
+  const funFacts = [
+    {
+      title: "test",
+      description: "test"
+    },
+    {
+      title: "test",
+      description: "test"
+    }
+  ];
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length);
-  };
+  // Hobbies carousel data
+  const hobbiesCarouselSlides = [
+    {
+      title: "Spearfishing",
+      description: "Underwater hunting and fishing",
+      image: "/images/spearfishing.jpg",
+      tooltip: "One of my favorite activities - the patience and precision required translates well to programming"
+    },
+    {
+      title: "Boating",
+      description: "Time on the water",
+      image: "/images/boating.jpg",
+      tooltip: "Spending time on the water teaches patience and quick thinking under pressure"
+    },
+    {
+      title: "Gaming",
+      description: "Strategic problem solving",
+      image: "/images/gaming.jpg",
+      tooltip: "Video games have taught me more about problem-solving than most traditional education"
+    }
+  ];
 
-  const goToSlide = (index: number) => {
-    setCurrentSlide(index);
-  };
+
 
   return (
     <div ref={containerRef} className="relative">
@@ -164,61 +191,10 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="relative h-96 bg-white/20 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl">
-                {/* Slides */}
-                <div className="relative h-full overflow-hidden">
-                  <motion.div 
-                    className="flex h-full"
-                    animate={{ x: `-${currentSlide * 100}%` }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                  >
-                    {carouselSlides.map((slide, index) => (
-                      <div key={index} className="min-w-full h-full bg-gradient-to-br from-[#1e3b24] to-[#606C38] flex items-center justify-center">
-                        <div className="text-center text-white p-8">
-                          <div className="w-24 h-24 bg-white/20 rounded-full mx-auto mb-4 flex items-center justify-center">
-                            <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                              <path d={slide.icon}/>
-                            </svg>
-                          </div>
-                          <h3 className="text-xl font-semibold mb-2">{slide.title}</h3>
-                          <p className="text-sm opacity-80">{slide.description}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </motion.div>
-                </div>
-                
-                {/* Dots */}
-                <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                  {carouselSlides.map((_, index) => (
-                    <button 
-                      key={index}
-                      onClick={() => goToSlide(index)}
-                      className={`w-3 h-3 rounded-full transition-colors ${
-                        currentSlide === index ? 'bg-white' : 'bg-white/60 hover:bg-white'
-                      }`}
-                    />
-                  ))}
-                </div>
-                
-                {/* Arrows */}
-                <button 
-                  onClick={prevSlide}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
-                >
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                </button>
-                <button 
-                  onClick={nextSlide}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
-                >
-                  <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </button>
-              </div>
+              <ImageCarousel 
+                slides={carouselSlides}
+                showTooltips={true}
+              />
             </motion.div>
           </div>
         </div>
@@ -239,23 +215,33 @@ export default function Home() {
                 hobbies
               </h1>
               <p className="text-black text-lg md:text-xl leading-relaxed">
-                In my free time, I enjoy spearfishing, experimenting with random components I find, and playing video games. My technical focus spans systems programming, hardware interfacing, and performance optimization.
+                In my free time, I enjoy many activities, spearfishing, boating, playing video games, reading, and finding technology to mess with. Video games have been around in my life since I was a kid, although some view it as a waste of time, I truly believe video games can teach you so much about life. It is important to have moderation in everything, similar to video games. But my favorite hobby by far is water activities.
               </p>
               <p className="text-black text-lg md:text-xl leading-relaxed">
-                When I'm not coding or studying, you'll find me exploring the underwater world through spearfishing, where I've learned to appreciate the precision and patience required for both technical problem-solving and marine life observation.
+                I have been boating and spearfishing for as long as I can remember, and it has probably had the biggest impact on my life. Spending so much time on the water has taught me the value of patience, precision, and awareness qualities that I believe reflect in my character. My favorite trait, it has trained me to think quickly and be calm under pressure when things go south, which is often the case in unpredictable environments.
               </p>
             </motion.div>
 
-            {/* Coming soon */}
+            {/* Right column - Image carousel and fun facts */}
             <motion.div
-              className="relative"
+              className="relative space-y-8"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="relative h-96 bg-white/20 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center">
-                <p className="text-[#1e3b24] text-lg">Future hobbies content</p>
+              {/* Hobbies images carousel */}
+              <div>
+                <ImageCarousel 
+                  slides={hobbiesCarouselSlides}
+                  showTooltips={true}
+                />
               </div>
+
+              {/* Fun facts */}
+              <FunFactsCarousel 
+                facts={funFacts}
+                title="fun facts"
+              />
             </motion.div>
           </div>
         </div>
