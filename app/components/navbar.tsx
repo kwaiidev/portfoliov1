@@ -1,22 +1,131 @@
 "use client";
 
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+    const [activeSection, setActiveSection] = useState("home");
     const pathname = usePathname();
-    const isHome = pathname === "/";
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+            
+            // Show navbar when scrolling up or at the top
+            if (currentScrollY < lastScrollY || currentScrollY < 10) {
+                setIsVisible(true);
+            } 
+            // Hide navbar when scrolling down (but not at the very top)
+            else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+                setIsVisible(false);
+            }
+            
+            setLastScrollY(currentScrollY);
+
+            // Only update active section if we're on the home page
+            if (pathname === '/') {
+                const sections = ['home', 'about'];
+                const sectionElements = sections.map(section => 
+                    document.getElementById(section)
+                ).filter(Boolean);
+
+                let current = '';
+                sectionElements.forEach(section => {
+                    if (section) {
+                        const rect = section.getBoundingClientRect();
+                        if (rect.top <= 100 && rect.bottom >= 100) {
+                            current = section.id;
+                        }
+                    }
+                });
+
+                if (current) {
+                    setActiveSection(current);
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [lastScrollY, pathname]);
+
+    const scrollToSection = (sectionId: string) => {
+        if (pathname === '/') {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    };
+
+    const getActiveSection = () => {
+        if (pathname === '/') {
+            return activeSection;
+        } else if (pathname === '/experience') {
+            return 'career';
+        } else if (pathname === '/projects') {
+            return 'projects';
+        } else if (pathname === '/blog') {
+            return 'blog';
+        }
+        return 'home';
+    };
 
     return (
-        <nav className={`fixed top-0 left-0 w-full z-50 p-4 transition-colors duration-300 ${isHome ? "text-white" : "text-black"}`}>
+        <motion.nav 
+            className={`fixed top-0 left-0 w-full z-50 p-4 transition-all duration-300 ${
+                isVisible ? 'translate-y-0' : '-translate-y-full'
+            } text-white`}
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.6 }}
+        >
             <div className="max-w-screen-xl mx-auto flex justify-between items-center">
+                <Link href="/">
+                    <motion.div 
+                        className="text-2xl font-bold cursor-pointer"
+                        whileHover={{ scale: 1.05 }}
+                    >
+                        Jason Sacerio
+                    </motion.div>
+                </Link>
 
-                <div className="text-2xl font-bold">Jason Sacerio</div>
-
-                <div className="hidden md:flex space-x-6 absolute left-1/2 transform -translate-x-1/2">
-                    <a href="/" className="relative pb-1 after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:h-[4px] after:w-full after:bg-[#1e3b24] after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100 after:-translate-x-1/2">Home</a>
-                    <a href="/about" className="relative pb-1 after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:h-[4px] after:w-full after:bg-[#1e3b24] after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100 after:-translate-x-1/2">About</a>
-                    <a href="/career" className="relative pb-1 after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:h-[4px] after:w-full after:bg-[#1e3b24] after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100 after:-translate-x-1/2">Career</a>
-                    <a href="/projects" className="relative pb-1 after:content-[''] after:absolute after:left-1/2 after:bottom-0 after:h-[4px] after:w-full after:bg-[#1e3b24] after:scale-x-0 after:origin-center after:transition-transform after:duration-300 hover:after:scale-x-100 after:-translate-x-1/2">Projects</a>
+                <div className="hidden md:flex space-x-8 absolute left-1/2 transform -translate-x-1/2">
+                    {[
+                        { id: 'home', label: 'Home', href: '/' },
+                        { id: 'about', label: 'About', href: '/#about' },
+                        { id: 'career', label: 'Experience', href: '/experience' },
+                        { id: 'projects', label: 'Projects', href: '/projects' },
+                        { id: 'blog', label: 'Blog', href: '/blog' }
+                    ].map((item) => {
+                        const isActive = getActiveSection() === item.id;
+                        return (
+                            <Link key={item.id} href={item.href}>
+                                <motion.div
+                                    className={`relative pb-1 text-sm font-medium transition-colors duration-300 cursor-pointer ${
+                                        isActive 
+                                            ? 'text-white' 
+                                            : 'text-white/70 hover:text-white'
+                                    }`}
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    {item.label}
+                                    {isActive && (
+                                        <motion.div
+                                            className="absolute bottom-0 left-0 right-0 h-0.5 bg-white"
+                                            layoutId="activeIndicator"
+                                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                        />
+                                    )}
+                                </motion.div>
+                            </Link>
+                        );
+                    })}
                 </div>
 
                 <div className="flex items-center gap-4">
@@ -75,6 +184,6 @@ export default function Navbar() {
                     </a>
                 </div>
             </div>
-        </nav>
+        </motion.nav>
     );
 }
