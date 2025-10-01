@@ -58,7 +58,7 @@ export default function Home() {
 
   return (
     <div ref={containerRef} className="relative">
-      {/* Hero Section with Parallax Background */}
+      {/* Main landing area */}
       <section id="home" className="relative h-screen bg-black overflow-hidden">
         <motion.div
           className="absolute inset-0"
@@ -96,7 +96,7 @@ export default function Home() {
             hello, i'm jason.
           </motion.p>
           
-          {/* Scroll indicator */}
+          {/* Scroll down hint */}
           <motion.div
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
             animate={{ y: [0, 10, 0] }}
@@ -112,7 +112,7 @@ export default function Home() {
           </motion.div>
         </motion.div>
         
-        {/* Elegant curved transition */}
+        
         <motion.div 
           className="absolute bottom-0 left-0 w-full overflow-hidden"
           style={{ 
@@ -123,28 +123,27 @@ export default function Home() {
             className="relative block w-full h-20 transform scale-y-[-1]"
             data-name="Layer 1"
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
+            viewBox="0 20 1200 120"
             preserveAspectRatio="none"
           >
             <path
               d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-              className="fill-[#ede8d0]"
+              fill="#ede8d0"
             ></path>
           </svg>
         </motion.div>
       </section>
 
-      {/* About Section */}
-      <section id="about" className="relative min-h-screen bg-gradient-to-b from-[#ede8d0] to-[#f5f0e8] py-20">
-        <div className="max-w-8xl mx-auto px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start pt-16 min-h-[80vh]">
-            {/* Left Column - Text Content */}
+      {/* About me */}
+      <section id="about" className="relative min-h-screen bg-gradient-to-b from-[#ede8d0] via-[#f2ede0] to-[#f5f0e8] py-20">
+        <div className="max-w-8xl mx-auto px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 items-start pt-16 min-h-[80vh]">
+            {/* Text side */}
             <motion.div
               className="space-y-8"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
             >
               <h1 className="text-4xl md:text-5xl font-bold text-[#1e3b24] mb-3">
                 welcome to my portfolio
@@ -158,16 +157,15 @@ export default function Home() {
             </motion.div>
 
 
-            {/* Right Column - Image Carousel */}
+            {/* Visual side */}
             <motion.div
               className="relative"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
             >
               <div className="relative h-96 bg-white/20 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl">
-                {/* Carousel Container */}
+                {/* Slides */}
                 <div className="relative h-full overflow-hidden">
                   <motion.div 
                     className="flex h-full"
@@ -190,7 +188,7 @@ export default function Home() {
                   </motion.div>
                 </div>
                 
-                {/* Carousel Navigation Dots */}
+                {/* Dots */}
                 <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
                   {carouselSlides.map((_, index) => (
                     <button 
@@ -203,7 +201,7 @@ export default function Home() {
                   ))}
                 </div>
                 
-                {/* Navigation Arrows */}
+                {/* Arrows */}
                 <button 
                   onClick={prevSlide}
                   className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-colors"
@@ -226,17 +224,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Hobbies Section */}
-      <section id="hobbies" className="relative min-h-screen bg-gradient-to-b from-[#f5f0e8] to-[#ede8d0] py-20">
-        <div className="max-w-8xl mx-auto px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start pt-16 min-h-[80vh]">
-            {/* Left Column - Text Content */}
+      {/* What I do for fun */}
+      <section id="hobbies" className="relative min-h-screen bg-gradient-to-b from-[#f5f0e8] via-[#f0e8d4] to-[#ede8d0] py-20">
+        <div className="max-w-8xl mx-auto px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 items-start pt-16 min-h-[80vh]">
+            {/* Text side */}
             <motion.div
               className="space-y-8"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
             >
               <h1 className="text-4xl md:text-5xl font-bold text-[#1e3b24] mb-8">
                 hobbies
@@ -249,13 +246,12 @@ export default function Home() {
               </p>
             </motion.div>
 
-            {/* Right Column - Placeholder for future content */}
+            {/* Coming soon */}
             <motion.div
               className="relative"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
             >
               <div className="relative h-96 bg-white/20 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl flex items-center justify-center">
                 <p className="text-[#1e3b24] text-lg">Future hobbies content</p>
@@ -265,17 +261,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section id="skills" className="relative min-h-screen bg-gradient-to-b from-[#ede8d0] to-[#f5f0e8] py-20">
-        <div className="max-w-8xl mx-auto px-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start pt-16 min-h-[80vh]">
-            {/* Left Column - Text Content */}
+      {/* What I know */}
+      <section id="skills" className="relative min-h-screen bg-gradient-to-b from-[#ede8d0] via-[#f2ede0] to-[#f5f0e8] py-20">
+        <div className="max-w-8xl mx-auto px-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 items-start pt-16 min-h-[80vh]">
+            {/* Text side */}
             <motion.div
               className="space-y-8"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
             >
               <h1 className="text-4xl md:text-5xl font-bold text-[#1e3b24] mb-8">
                 skills
@@ -288,13 +283,12 @@ export default function Home() {
               </p>
             </motion.div>
 
-            {/* Right Column - Skills Component */}
+            {/* Skills display */}
             <motion.div
               className="relative"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              viewport={{ once: true }}
             >
               <div className="relative bg-white/20 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl p-8">
                 <Tech />
@@ -304,11 +298,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer Section */}
+      {/* Contact info */}
       <footer className="bg-[#283618]/80 text-[#FEFAE0] py-4">
         <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Left Column - Name and Description */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+            {/* Who I am */}
             <div className="space-y-4">
               <h3 className="text-2xl font-bold text-[#DDA15E]">Jason Sacerio</h3>
               <p className="text-[#FEFAE0]/80">
@@ -316,7 +310,7 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Center Column - Quick Links */}
+            {/* Quick links */}
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-[#DDA15E]">Quick Links</h4>
               <div className="space-y-2">
@@ -327,7 +321,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Right Column - Social Links */}
+            {/* Social stuff */}
             <div className="space-y-4">
               <h4 className="text-lg font-semibold text-[#DDA15E]">Connect</h4>
               <div className="flex space-x-4">
@@ -368,7 +362,7 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Bottom Bar */}
+          {/* Copyright */}
           <div className="border-t border-[#FEFAE0]/20 mt-8 pt-8 text-center">
             <p className="text-[#FEFAE0]/60">
               © 2024 Jason Sacerio. All rights reserved.
