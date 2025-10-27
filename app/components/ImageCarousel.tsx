@@ -78,7 +78,7 @@ export default function ImageCarousel({ slides, className = "", showTooltips = t
           onClick={prevSlide}
           className="p-2 scale-110 hover:scale-125 transition-transform"
         >
-          <svg className="w-6 h-6 text-[#1e3b24]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-6 h-6 text-[#e0e1dd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
@@ -90,7 +90,7 @@ export default function ImageCarousel({ slides, className = "", showTooltips = t
               key={index}
               onClick={() => goToSlide(index)}
               className={`rounded-full transition-all ${
-                currentSlide === index ? 'w-4 h-4 bg-[#1e3b24]' : 'w-3 h-3 bg-[#1e3b24]/40'
+                currentSlide === index ? 'w-4 h-4 bg-[#F0EBD8]' : 'w-3 h-3 bg-[#F0EBD8]/40'
               }`}
             />
           ))}
@@ -101,7 +101,7 @@ export default function ImageCarousel({ slides, className = "", showTooltips = t
           onClick={nextSlide}
           className="p-2 scale-110 hover:scale-125 transition-transform"
         >
-          <svg className="w-6 h-6 text-[#1e3b24]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-6 h-6 text-[#e0e1dd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>

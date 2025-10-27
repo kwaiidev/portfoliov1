@@ -1,13 +1,14 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
+import { useRef } from 'react';
 import Tech from './components/skills';
 import Timeline from './components/timeline';
 import ImageCarousel from './components/ImageCarousel';
 import FunFactsCarousel from './components/FunFactsCarousel';
+import CSSWaves from './components/CSSWaves';
+import TextContentCard from './components/TextContentCard';
 
 export default function Home() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -17,13 +18,12 @@ export default function Home() {
   // Parallax transforms
   const backgroundY = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const textY = useTransform(scrollYProgress, [0, 0.5], ['0%', '-100%']);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
   const curveY = useTransform(scrollYProgress, [0, 0.2], [100, 0]);
   
   // Spring animations for smooth effects
-  const smoothY = useSpring(backgroundY, { stiffness: 100, damping: 30, restDelta: 0.001 });
-  const smoothTextY = useSpring(textY, { stiffness: 100, damping: 30, restDelta: 0.001 });
-  const smoothCurveY = useSpring(curveY, { stiffness: 100, damping: 30, restDelta: 0.001 });
+  const smoothY = useSpring(backgroundY, { stiffness: 50, damping: 25, restDelta: 0.01 });
+  const smoothTextY = useSpring(textY, { stiffness: 50, damping: 25, restDelta: 0.01 });
+  const smoothCurveY = useSpring(curveY, { stiffness: 50, damping: 25, restDelta: 0.01 });
 
   // Carousel data
   const carouselSlides = [
@@ -81,12 +81,12 @@ export default function Home() {
     }
   ];
 
-
-
   return (
-    <div ref={containerRef} className="relative">
+    <CSSWaves className="relative min-h-screen">
+    <div ref={containerRef} className="relative" style={{ position: 'relative' }}>
+      
       {/* Main landing area */}
-      <section id="home" className="relative h-screen bg-black overflow-hidden">
+      <section id="home" className="relative h-screen overflow-hidden">
         <motion.div
           className="absolute inset-0"
           style={{ y: smoothY }}
@@ -97,17 +97,18 @@ export default function Home() {
               loop
               muted
               playsInline
-            className="w-full h-[120%] object-cover blur-sm"
+            className="w-full h-[120%] object-cover"
           />
-          <div className="absolute inset-0 bg-black/40" />
+          <div className="absolute inset-0 bg-[#778da9]/40" />
         </motion.div>
 
         <motion.div
           className="absolute inset-0 flex flex-col items-center justify-center z-10 pointer-events-none"
-          style={{ y: smoothTextY, opacity: textOpacity }}
+          style={{ y: smoothTextY }}
         >
           <motion.h1
             className="text-4xl md:text-4xl font-bold text-white text-center mb-6"
+            style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.7), 0px 0px 8px rgba(255,255,255,0.3)' }}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
@@ -116,6 +117,7 @@ export default function Home() {
           </motion.h1>
           <motion.p
             className="font-bold text-white text-center text-lg md:text-xl"
+            style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.7), 0px 0px 8px rgba(255,255,255,0.3)' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
@@ -129,16 +131,15 @@ export default function Home() {
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
           >
-            <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
+            <div className="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center">
               <motion.div
-                className="w-1 h-3 bg-white/70 rounded-full mt-2"
+                className="w-1 h-3 bg-white rounded-full mt-2"
                 animate={{ y: [0, 12, 0] }}
                 transition={{ duration: 2, repeat: Infinity }}
               />
             </div>
           </motion.div>
         </motion.div>
-        
         
         <motion.div 
           className="absolute bottom-0 left-0 w-full overflow-hidden"
@@ -155,15 +156,15 @@ export default function Home() {
           >
             <path
               d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z"
-              fill="#ede8d0"
+              fill="#778da9"
             ></path>
           </svg>
         </motion.div>
       </section>
 
       {/* About me */}
-      <section id="about" className="relative min-h-screen bg-gradient-to-b from-[#ede8d0] via-[#f2ede0] to-[#f5f0e8] py-20">
-        <div className="max-w-8xl mx-auto px-16">
+      <section id="about" className="relative min-h-screen py-20 overflow-hidden">
+        <div className="max-w-8xl mx-auto px-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 items-start pt-16 min-h-[80vh]">
             {/* Text side */}
             <motion.div
@@ -172,17 +173,21 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl md:text-5xl font-bold text-[#1e3b24] mb-3">
-                welcome to my portfolio
-              </h1>
-              <p className="text-black text-lg md:text-xl leading-relaxed">
-              I’m a software engineer with a focus on low-level programming and systems development. My work centers on understanding how software interacts with hardware and finding ways to optimize performance at the core level. I enjoy building efficient solutions that bridge the gap between machine and application, whether that’s through fine-tuned system code, hardware integration, or exploring new methods to improve reliability and speed.
-              </p>
-              <p className="text-black text-lg md:text-xl leading-relaxed">
-                Currently, I’m a third-year Computer Science student at the University of Central Florida. Beyond the classroom, I’m always experimenting with projects that push my technical growth, from working with hardware components to refining my skills in system optimization. My portfolio reflects both a strong academic foundation and a curiosity-driven approach to problem solving, showcasing the work I’ve done to deepen my expertise in computer science and engineering.
-              </p>
+              {/* Text Panel Container */}
+              <TextContentCard>
+                <h1 className="text-4xl md:text-5xl font-bold text-[#e0e1dd] mb-8">
+                  welcome to my portfolio
+                </h1>
+                <div className="space-y-6">
+                  <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed">
+                    I'm a software engineer with a focus on low-level programming and systems development. My work centers on understanding how software interacts with hardware and finding ways to optimize performance at the core level. I enjoy building efficient solutions that bridge the gap between machine and application, whether that's through fine-tuned system code, hardware integration, or exploring new methods to improve reliability and speed.
+                  </p>
+                  <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed">
+                    Currently, I'm a third-year Computer Science student at the University of Central Florida. Beyond the classroom, I'm always experimenting with projects that push my technical growth, from working with hardware components to refining my skills in system optimization. My portfolio reflects both a strong academic foundation and a curiosity-driven approach to problem solving, showcasing the work I've done to deepen my expertise in computer science and engineering.
+                  </p>
+                </div>
+              </TextContentCard>
             </motion.div>
-
 
             {/* Visual side */}
             <motion.div
@@ -201,8 +206,8 @@ export default function Home() {
       </section>
 
       {/* What I do for fun */}
-      <section id="hobbies" className="relative min-h-screen bg-gradient-to-b from-[#f5f0e8] via-[#f0e8d4] to-[#ede8d0] py-20">
-        <div className="max-w-8xl mx-auto px-16">
+      <section id="hobbies" className="relative min-h-screen py-20">
+        <div className="max-w-8xl mx-auto px-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 items-start pt-16 min-h-[80vh]">
             {/* Text side */}
             <motion.div
@@ -211,15 +216,17 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl md:text-5xl font-bold text-[#1e3b24] mb-8">
-                hobbies
-              </h1>
-              <p className="text-black text-lg md:text-xl leading-relaxed">
-                In my free time, I enjoy many activities, spearfishing, boating, playing video games, reading, and finding technology to mess with. Video games have been around in my life since I was a kid, although some view it as a waste of time, I truly believe video games can teach you so much about life. It is important to have moderation in everything, similar to video games. But my favorite hobby by far is water activities.
-              </p>
-              <p className="text-black text-lg md:text-xl leading-relaxed">
-                I have been boating and spearfishing for as long as I can remember, and it has probably had the biggest impact on my life. Spending so much time on the water has taught me the value of patience, precision, and awareness qualities that I believe reflect in my character. My favorite trait, it has trained me to think quickly and be calm under pressure when things go south, which is often the case in unpredictable environments.
-              </p>
+              <TextContentCard>
+                <h1 className="text-4xl md:text-5xl font-bold text-[#e0e1dd] mb-8">
+                  hobbies
+                </h1>
+                <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed mb-4">
+                  In my free time, I enjoy many activities, spearfishing, boating, playing video games, reading, and finding technology to mess with. Video games have been around in my life since I was a kid, although some view it as a waste of time, I truly believe video games can teach you so much about life. It is important to have moderation in everything, similar to video games. But my favorite hobby by far is water activities.
+                </p>
+                <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed">
+                  I have been boating and spearfishing for as long as I can remember, and it has probably had the biggest impact on my life. Spending so much time on the water has taught me the value of patience, precision, and awareness qualities that I believe reflect in my character. My favorite trait, it has trained me to think quickly and be calm under pressure when things go south, which is often the case in unpredictable environments.
+                </p>
+              </TextContentCard>
             </motion.div>
 
             {/* Right column - Image carousel and fun facts */}
@@ -248,8 +255,8 @@ export default function Home() {
       </section>
 
       {/* What I know */}
-      <section id="skills" className="relative min-h-screen bg-gradient-to-b from-[#ede8d0] via-[#f2ede0] to-[#f5f0e8] py-20">
-        <div className="max-w-8xl mx-auto px-16">
+      <section id="skills" className="relative min-h-screen py-20">
+        <div className="max-w-8xl mx-auto px-16 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 items-start pt-16 min-h-[80vh]">
             {/* Text side */}
             <motion.div
@@ -258,15 +265,17 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
             >
-              <h1 className="text-4xl md:text-5xl font-bold text-[#1e3b24] mb-8">
-                skills
-              </h1>
-              <p className="text-black text-lg md:text-xl leading-relaxed">
-                My technical expertise spans across multiple domains, with a strong foundation in systems programming, hardware interfacing, and performance optimization. I'm proficient in various programming languages and frameworks that enable me to build efficient, scalable solutions.
-              </p>
-              <p className="text-black text-lg md:text-xl leading-relaxed">
-                I continuously work on expanding my skill set through hands-on projects and real-world applications, ensuring I stay current with the latest technologies and best practices in software development.
-              </p>
+              <TextContentCard>
+                <h1 className="text-4xl md:text-5xl font-bold text-[#e0e1dd] mb-8">
+                  skills
+                </h1>
+                <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed mb-4">
+                  My technical expertise spans across multiple domains, with a strong foundation in systems programming, hardware interfacing, and performance optimization. I'm proficient in various programming languages and frameworks that enable me to build efficient, scalable solutions.
+                </p>
+                <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed">
+                  I continuously work on expanding my skill set through hands-on projects and real-world applications, ensuring I stay current with the latest technologies and best practices in software development.
+                </p>
+              </TextContentCard>
             </motion.div>
 
             {/* Skills display */}
@@ -276,87 +285,31 @@ export default function Home() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <div className="relative bg-white/20 backdrop-blur-sm rounded-2xl overflow-hidden shadow-2xl p-8">
-                <Tech />
-              </div>
+              <motion.div 
+                className="relative bg-[#0d1b2a]/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl border border-[#415a77]/30 group overflow-hidden"
+                whileHover={{ 
+                  scale: 1.02,
+                  boxShadow: "0 25px 50px -12px rgba(13, 27, 42, 0.8), 0 0 30px rgba(119, 141, 169, 0.3)"
+                }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+              >
+                {/* Animated background gradient */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#1b263b]/20 to-[#0d1b2a]/40 rounded-2xl"></div>
+                
+                {/* Animated border glow */}
+                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#778da9]/20 via-[#415a77]/30 to-[#778da9]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
+                
+                {/* Content */}
+                <div className="relative z-10">
+                  <Tech />
+                </div>
+              </motion.div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Contact info */}
-      <footer className="bg-[#283618]/80 text-[#FEFAE0] py-4">
-        <div className="max-w-7xl mx-auto px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {/* Who I am */}
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-[#DDA15E]">Jason Sacerio</h3>
-              <p className="text-[#FEFAE0]/80">
-                Software Engineer specializing in low-level programming and systems development.
-              </p>
-            </div>
-
-            {/* Quick links */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold text-[#DDA15E]">Quick Links</h4>
-              <div className="space-y-2">
-                <a href="#home" className="block text-[#FEFAE0]/80 hover:text-[#DDA15E] transition-colors">Home</a>
-                <a href="#about" className="block text-[#FEFAE0]/80 hover:text-[#DDA15E] transition-colors">About</a>
-                <a href="#hobbies" className="block text-[#FEFAE0]/80 hover:text-[#DDA15E] transition-colors">Hobbies</a>
-                <a href="#skills" className="block text-[#FEFAE0]/80 hover:text-[#DDA15E] transition-colors">Skills</a>
-              </div>
-            </div>
-
-            {/* Social stuff */}
-            <div className="space-y-4">
-              <h4 className="text-lg font-semibold text-[#DDA15E]">Connect</h4>
-              <div className="flex space-x-4">
-                <a
-                  href="https://github.com/kwaiidev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#FEFAE0]/80 hover:text-[#DDA15E] transition-colors"
-                  aria-label="GitHub"
-                >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-                  </svg>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/sacerio417/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#FEFAE0]/80 hover:text-[#DDA15E] transition-colors"
-                  aria-label="LinkedIn"
-                >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-                  </svg>
-                </a>
-                <a
-                  href="/resume.pdf"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#FEFAE0]/80 hover:text-[#DDA15E] transition-colors"
-                  aria-label="Resume"
-                >
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
-          </div>
-
-          {/* Copyright */}
-          <div className="border-t border-[#FEFAE0]/20 mt-8 pt-8 text-center">
-            <p className="text-[#FEFAE0]/60">
-              © 2024 Jason Sacerio. All rights reserved.
-            </p>
-          </div>
-        </div>
-      </footer>
-
     </div>
+    </CSSWaves>
   );
 }

@@ -1,11 +1,14 @@
+'use client';
 import Timeline from '../components/timeline';
+import CSSWaves from '../components/CSSWaves';
 
 export default function Experience() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#f5f0e8] to-[#ede8d0] py-20">
-      <div className="max-w-6xl mx-auto px-4">
-        <Timeline 
-          title="experience" 
+    <CSSWaves className="relative min-h-screen">
+      <div className="min-h-screen py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <Timeline 
+            title="experience" 
           items={[
             {
               title: "software engineer intern",
@@ -49,12 +52,13 @@ export default function Experience() {
               subtitle: "Florida Elite Athletics",
               date: "2020-2022",
               description: [
-                "Help under served athletes around South Florida get the resources needed to succeed."
+                "Help under served athletes around South Florida get the resources needed to succeed. Work with a team of 4 to create dreams come true for kids in the community of broward county."
               ]
             }
           ]} 
-        />
+        /> 
+        </div>
       </div>
-    </div>
+    </CSSWaves>
   );
 }

@@ -1,11 +1,14 @@
+'use client';
 import Timeline from '../components/timeline';
+import CSSWaves from '../components/CSSWaves';
 
 export default function Projects() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#ede8d0] to-[#f5f0e8] py-20">
-      <div className="max-w-6xl mx-auto px-4">
-        <Timeline 
-          title="projects" 
+    <CSSWaves className="relative min-h-screen">
+      <div className="min-h-screen py-20">
+        <div className="max-w-6xl mx-auto px-4">
+          <Timeline 
+            title="projects" 
           items={[
             {
               title: "swaghack",
@@ -32,8 +35,9 @@ export default function Projects() {
               ]
             }
           ]} 
-        />
+        /> 
+        </div>
       </div>
-    </div>
+    </CSSWaves>
   );
 }
