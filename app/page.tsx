@@ -2,7 +2,6 @@
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { useRef } from 'react';
 import Tech from './components/skills';
-import Timeline from './components/timeline';
 import ImageCarousel from './components/ImageCarousel';
 import FunFactsCarousel from './components/FunFactsCarousel';
 import CSSWaves from './components/CSSWaves';
@@ -113,7 +112,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
-            "the greatest fear is not what will happen, but what will not."
+            &ldquo;the greatest fear is not what will happen, but what will not.&rdquo;
           </motion.h1>
           <motion.p
             className="font-bold text-white text-center text-lg md:text-xl"
@@ -122,7 +121,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.8 }}
           >
-            hello, i'm jason.
+            hello, i&apos;m jason.
           </motion.p>
           
           {/* Scroll down hint */}
@@ -180,10 +179,10 @@ export default function Home() {
                 </h1>
                 <div className="space-y-6">
                   <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed">
-                    I'm a software engineer with a focus on low-level programming and systems development. My work centers on understanding how software interacts with hardware and finding ways to optimize performance at the core level. I enjoy building efficient solutions that bridge the gap between machine and application, whether that's through fine-tuned system code, hardware integration, or exploring new methods to improve reliability and speed.
+                    I&apos;m a software engineer with a focus on low-level programming and systems development. My work centers on understanding how software interacts with hardware and finding ways to optimize performance at the core level. I enjoy building efficient solutions that bridge the gap between machine and application, whether that&apos;s through fine-tuned system code, hardware integration, or exploring new methods to improve reliability and speed.
                   </p>
                   <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed">
-                    Currently, I'm a third-year Computer Science student at the University of Central Florida. Beyond the classroom, I'm always experimenting with projects that push my technical growth, from working with hardware components to refining my skills in system optimization. My portfolio reflects both a strong academic foundation and a curiosity-driven approach to problem solving, showcasing the work I've done to deepen my expertise in computer science and engineering.
+                    Currently, I&apos;m a third-year Computer Science student at the University of Central Florida. Beyond the classroom, I&apos;m always experimenting with projects that push my technical growth, from working with hardware components to refining my skills in system optimization. My portfolio reflects both a strong academic foundation and a curiosity-driven approach to problem solving, showcasing the work I&apos;ve done to deepen my expertise in computer science and engineering.
                   </p>
                 </div>
               </TextContentCard>
@@ -270,7 +269,7 @@ export default function Home() {
                   skills
                 </h1>
                 <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed mb-4">
-                  My technical expertise spans across multiple domains, with a strong foundation in systems programming, hardware interfacing, and performance optimization. I'm proficient in various programming languages and frameworks that enable me to build efficient, scalable solutions.
+                  My technical expertise spans across multiple domains, with a strong foundation in systems programming, hardware interfacing, and performance optimization. I&apos;m proficient in various programming languages and frameworks that enable me to build efficient, scalable solutions.
                 </p>
                 <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed">
                   I continuously work on expanding my skill set through hands-on projects and real-world applications, ensuring I stay current with the latest technologies and best practices in software development.

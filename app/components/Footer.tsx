@@ -1,3 +1,7 @@
+'use client';
+
+import Link from 'next/link';
+
 export default function Footer() {
   return (
     <footer className="bg-[#0d1b2a] text-[#e0e1dd] py-4">
@@ -15,12 +19,12 @@ export default function Footer() {
           <div className="space-y-4">
             <h4 className="text-lg font-semibold text-[#778da9]">Quick Links</h4>
             <div className="space-y-2">
-              <a href="/#home" className="block text-[#e0e1dd]/80 hover:text-[#778da9] transition-colors">Home</a>
-              <a href="/#about" className="block text-[#e0e1dd]/80 hover:text-[#778da9] transition-colors">About</a>
-              <a href="/#hobbies" className="block text-[#e0e1dd]/80 hover:text-[#778da9] transition-colors">Hobbies</a>
-              <a href="/#skills" className="block text-[#e0e1dd]/80 hover:text-[#778da9] transition-colors">Skills</a>
-              <a href="/projects" className="block text-[#e0e1dd]/80 hover:text-[#778da9] transition-colors">Projects</a>
-              <a href="/experience" className="block text-[#e0e1dd]/80 hover:text-[#778da9] transition-colors">Experience</a>
+              <Link href="/" className="block text-[#e0e1dd]/80 hover:text-[#778da9] transition-colors">Home</Link>
+              <Link href="/#about" className="block text-[#e0e1dd]/80 hover:text-[#778da9] transition-colors">About</Link>
+              <Link href="/#hobbies" className="block text-[#e0e1dd]/80 hover:text-[#778da9] transition-colors">Hobbies</Link>
+              <Link href="/#skills" className="block text-[#e0e1dd]/80 hover:text-[#778da9] transition-colors">Skills</Link>
+              <Link href="/projects" className="block text-[#e0e1dd]/80 hover:text-[#778da9] transition-colors">Projects</Link>
+              <Link href="/experience" className="block text-[#e0e1dd]/80 hover:text-[#778da9] transition-colors">Experience</Link>
             </div>
           </div>
 

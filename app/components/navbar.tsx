@@ -53,15 +53,6 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [lastScrollY, pathname]);
 
-    const scrollToSection = (sectionId: string) => {
-        if (pathname === '/') {
-            const element = document.getElementById(sectionId);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    };
-
     const getActiveSection = () => {
         if (pathname === '/') {
             return activeSection;

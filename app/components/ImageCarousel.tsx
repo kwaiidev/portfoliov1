@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 interface CarouselSlide {
   title: string;
@@ -44,10 +45,11 @@ export default function ImageCarousel({ slides, className = "", showTooltips = t
           >
             {slides.map((slide, index) => (
               <div key={index} className="min-w-full h-full relative">
-                <img 
+                <Image 
                   src={slide.image} 
                   alt={slide.title}
-                  className="w-full h-full object-cover"
+                  fill
+                  className="object-cover"
                 />
                 
                 {/* Tooltip */}

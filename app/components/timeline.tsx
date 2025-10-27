@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ReactNode, useRef } from 'react';
+import { useRef } from 'react';
 import TextContentCard from './TextContentCard';
 
 // Animation variants
@@ -68,11 +68,6 @@ export default function Timeline({ title, items }: TimelineProps) {
   const y2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
   const y3 = useTransform(scrollYProgress, [0, 1], [0, -150]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
-  
-  // Create transforms for each item
-  const itemTransforms = items.map((_, index) => 
-    useTransform(scrollYProgress, [0, 1], [0, -50 - (index * 20)])
-  );
 
   return (
     <div ref={containerRef} className="min-h-screen bg-transparent flex flex-col items-center justify-start relative pt-20 pb-12">
@@ -112,7 +107,6 @@ export default function Timeline({ title, items }: TimelineProps) {
             <motion.div
               key={index}
               className="relative flex items-start"
-              style={{ y: itemTransforms[index] }}
               variants={itemVariants}
               transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
             >
