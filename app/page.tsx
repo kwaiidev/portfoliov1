@@ -106,7 +106,7 @@ export default function Home() {
           style={{ y: smoothTextY }}
         >
           <motion.h1
-            className="text-4xl md:text-4xl font-bold text-white text-center mb-6"
+            className="text-2xl sm:text-3xl md:text-4xl px-4 font-bold text-white text-center mb-6"
             style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.7), 0px 0px 8px rgba(255,255,255,0.3)' }}
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -115,7 +115,7 @@ export default function Home() {
             &ldquo;the greatest fear is not what will happen, but what will not.&rdquo;
           </motion.h1>
           <motion.p
-            className="font-bold text-white text-center text-lg md:text-xl"
+            className="font-bold text-white text-center text-base md:text-lg lg:text-xl px-4"
             style={{ textShadow: '2px 2px 4px rgba(0,0,0,0.7), 0px 0px 8px rgba(255,255,255,0.3)' }}
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -162,9 +162,9 @@ export default function Home() {
       </section>
 
       {/* About me */}
-      <section id="about" className="relative min-h-screen py-20 overflow-hidden">
-        <div className="max-w-8xl mx-auto px-16 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 items-start pt-16 min-h-[80vh]">
+      <section id="about" className="relative min-h-screen py-8 md:py-20 overflow-hidden">
+        <div className="max-w-8xl mx-auto px-4 md:px-8 lg:px-16 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-20 lg:gap-40 items-start pt-8 md:pt-16 min-h-[80vh]">
             {/* Text side */}
             <motion.div
               className="space-y-8"
@@ -174,14 +174,14 @@ export default function Home() {
             >
               {/* Text Panel Container */}
               <TextContentCard>
-                <h1 className="text-4xl md:text-5xl font-bold text-[#e0e1dd] mb-8">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#e0e1dd] mb-4 md:mb-8">
                   welcome to my portfolio
                 </h1>
-                <div className="space-y-6">
-                  <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed">
+                <div className="space-y-4 md:space-y-6">
+                  <p className="text-[#e0e1dd] text-base md:text-lg lg:text-xl leading-relaxed">
                     I&apos;m a software engineer with a focus on low-level programming and systems development. My work centers on understanding how software interacts with hardware and finding ways to optimize performance at the core level. I enjoy building efficient solutions that bridge the gap between machine and application, whether that&apos;s through fine-tuned system code, hardware integration, or exploring new methods to improve reliability and speed.
                   </p>
-                  <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed">
+                  <p className="text-[#e0e1dd] text-base md:text-lg lg:text-xl leading-relaxed">
                     Currently, I&apos;m a third-year Computer Science student at the University of Central Florida. Beyond the classroom, I&apos;m always experimenting with projects that push my technical growth, from working with hardware components to refining my skills in system optimization. My portfolio reflects both a strong academic foundation and a curiosity-driven approach to problem solving, showcasing the work I&apos;ve done to deepen my expertise in computer science and engineering.
                   </p>
                 </div>
@@ -205,9 +205,9 @@ export default function Home() {
       </section>
 
       {/* What I do for fun */}
-      <section id="hobbies" className="relative min-h-screen py-20">
-        <div className="max-w-8xl mx-auto px-16 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 items-start pt-16 min-h-[80vh]">
+      <section id="hobbies" className="relative min-h-screen py-8 md:py-20">
+        <div className="max-w-8xl mx-auto px-4 md:px-8 lg:px-16 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-20 lg:gap-40 items-start pt-8 md:pt-16 min-h-[80vh]">
             {/* Text side */}
             <motion.div
               className="space-y-8"
@@ -216,13 +216,13 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <TextContentCard>
-                <h1 className="text-4xl md:text-5xl font-bold text-[#e0e1dd] mb-8">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#e0e1dd] mb-4 md:mb-8">
                   hobbies
                 </h1>
-                <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed mb-4">
+                <p className="text-[#e0e1dd] text-base md:text-lg lg:text-xl leading-relaxed mb-3 md:mb-4">
                   In my free time, I enjoy many activities, spearfishing, boating, playing video games, reading, and finding technology to mess with. Video games have been around in my life since I was a kid, although some view it as a waste of time, I truly believe video games can teach you so much about life. It is important to have moderation in everything, similar to video games. But my favorite hobby by far is water activities.
                 </p>
-                <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed">
+                <p className="text-[#e0e1dd] text-base md:text-lg lg:text-xl leading-relaxed">
                   I have been boating and spearfishing for as long as I can remember, and it has probably had the biggest impact on my life. Spending so much time on the water has taught me the value of patience, precision, and awareness qualities that I believe reflect in my character. My favorite trait, it has trained me to think quickly and be calm under pressure when things go south, which is often the case in unpredictable environments.
                 </p>
               </TextContentCard>
@@ -254,9 +254,9 @@ export default function Home() {
       </section>
 
       {/* What I know */}
-      <section id="skills" className="relative min-h-screen py-20">
-        <div className="max-w-8xl mx-auto px-16 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-40 items-start pt-16 min-h-[80vh]">
+      <section id="skills" className="relative min-h-screen py-8 md:py-20">
+        <div className="max-w-8xl mx-auto px-4 md:px-8 lg:px-16 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-20 lg:gap-40 items-start pt-8 md:pt-16 min-h-[80vh]">
             {/* Text side */}
             <motion.div
               className="space-y-8"
@@ -265,13 +265,13 @@ export default function Home() {
               transition={{ duration: 0.8 }}
             >
               <TextContentCard>
-                <h1 className="text-4xl md:text-5xl font-bold text-[#e0e1dd] mb-8">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#e0e1dd] mb-4 md:mb-8">
                   skills
                 </h1>
-                <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed mb-4">
+                <p className="text-[#e0e1dd] text-base md:text-lg lg:text-xl leading-relaxed mb-3 md:mb-4">
                   My technical expertise spans across multiple domains, with a strong foundation in systems programming, hardware interfacing, and performance optimization. I&apos;m proficient in various programming languages and frameworks that enable me to build efficient, scalable solutions.
                 </p>
-                <p className="text-[#e0e1dd] text-lg md:text-xl leading-relaxed">
+                <p className="text-[#e0e1dd] text-base md:text-lg lg:text-xl leading-relaxed">
                   I continuously work on expanding my skill set through hands-on projects and real-world applications, ensuring I stay current with the latest technologies and best practices in software development.
                 </p>
               </TextContentCard>
