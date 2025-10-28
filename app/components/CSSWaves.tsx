@@ -12,11 +12,11 @@ export default function CSSWaves({ children, className = "" }: CSSWavesProps) {
       <div className="absolute inset-0 overflow-hidden">
         {/* Wave 1 - Back layer */}
         <svg
-          className="absolute bottom-0 left-0"
+          className="absolute bottom-0"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
           preserveAspectRatio="none"
-          style={{ height: '100%', width: '150%', left: '-25%', minWidth: '2000px' }}
+          style={{ height: '100%', width: '500%', left: '-100%' }}
         >
           <path
             fill="#415a77"
@@ -35,11 +35,11 @@ export default function CSSWaves({ children, className = "" }: CSSWavesProps) {
 
         {/* Wave 2 - Middle layer */}
         <svg
-          className="absolute bottom-0 left-0"
+          className="absolute bottom-0"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
           preserveAspectRatio="none"
-          style={{ height: '100%', width: '150%', left: '-25%', minWidth: '2000px' }}
+          style={{ height: '100%', width: '500%', left: '-100%' }}
         >
           <path
             fill="#1b263b"
@@ -58,11 +58,11 @@ export default function CSSWaves({ children, className = "" }: CSSWavesProps) {
 
         {/* Wave 3 - Front layer (touches footer) */}
         <svg
-          className="absolute bottom-0 left-0"
+          className="absolute bottom-0"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1440 320"
           preserveAspectRatio="none"
-          style={{ height: '100%', width: '150%', left: '-25%', minWidth: '2000px' }}
+          style={{ height: '100%', width: '500%', left: '-100%' }}
         >
           <path
             fill="#0d1b2a"

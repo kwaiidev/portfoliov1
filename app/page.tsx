@@ -190,7 +190,7 @@ export default function Home() {
 
             {/* Visual side */}
             <motion.div
-              className="relative"
+              className="relative order-2"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -230,7 +230,7 @@ export default function Home() {
 
             {/* Right column - Image carousel and fun facts */}
             <motion.div
-              className="relative space-y-8"
+              className="relative space-y-8 order-2"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -259,7 +259,7 @@ export default function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-20 lg:gap-40 items-start pt-8 md:pt-16 min-h-[80vh]">
             {/* Text side */}
             <motion.div
-              className="space-y-8"
+              className="space-y-4 md:space-y-8 order-1"
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
@@ -279,7 +279,7 @@ export default function Home() {
 
             {/* Skills display */}
             <motion.div
-              className="relative"
+              className="relative order-2"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
