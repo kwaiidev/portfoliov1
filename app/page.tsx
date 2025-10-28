@@ -33,17 +33,12 @@ export default function Home() {
       tooltip: "My girlfriend and I at our (my) favorite restaurant, Flanigans"
     },
     {
-      title: "Problem Solving",
-      description: "Creative solutions to complex challenges",
-      image: "/images/problem-solving.jpg",
-      tooltip: "Approaching complex challenges with creative thinking, systematic analysis, and innovative solutions that push technological boundaries."
+      title: "SJ Sharks Game",
+      description: "big fan of hockey, this was my first non-panthers game with my longtime online friends from california.",
+      image: "/sjsharks.jpg",
+      tooltip: "big fan of hockey, this was my first non-panthers game with my longtime online friends from california."
     },
-    {
-      title: "Innovation",
-      description: "Exploring new technologies and approaches",
-      image: "/images/innovation.jpg",
-      tooltip: "Exploring cutting-edge technologies, experimenting with new approaches, and building solutions that shape the future of software development."
-    }
+
   ];
 
   // Fun facts data
@@ -61,22 +56,16 @@ export default function Home() {
   // Hobbies carousel data
   const hobbiesCarouselSlides = [
     {
-      title: "Spearfishing",
+      title: "fishing",
       description: "Underwater hunting and fishing",
-      image: "/images/spearfishing.jpg",
-      tooltip: "One of my favorite activities - the patience and precision required translates well to programming"
+      image: "/bigcatch.jpg",
+      tooltip: "last time i went to the bahamas, some light appetizers"
     },
     {
-      title: "Boating",
+      title: "on a boat",
       description: "Time on the water",
-      image: "/images/boating.jpg",
-      tooltip: "Spending time on the water teaches patience and quick thinking under pressure"
-    },
-    {
-      title: "Gaming",
-      description: "Strategic problem solving",
-      image: "/images/gaming.jpg",
-      tooltip: "Video games have taught me more about problem-solving than most traditional education"
+      image: "/onboat.jpg",
+      tooltip: "my family an i just chilling on the water"
     }
   ];
 
