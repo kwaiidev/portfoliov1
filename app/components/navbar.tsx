@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
@@ -160,9 +161,11 @@ export default function Navbar() {
                             className="hover:opacity-70 transition-opacity"
                             aria-label="View Resume"
                         >
-                            <img 
+                            <Image 
                                 src="/resume.svg" 
                                 alt="Resume" 
+                                width={24}
+                                height={24}
                                 className="h-5 w-5 md:h-6 md:w-6"
                             />
                         </a>

@@ -1,16 +1,17 @@
 'use client';
 
 import React from 'react';
-import { FaJava, FaReact } from 'react-icons/fa'
+import { FaJava, FaReact, FaRust } from 'react-icons/fa'
 import {
-    SiPython, SiJavascript, SiTypescript, SiC, SiCplusplus, SiSharp, SiHtml5, SiCss3,
-    SiNextdotjs, SiNodedotjs, SiTailwindcss, SiTrpc, SiPrisma, SiOpencv,
-    SiGit, SiPostgresql, SiDocker, SiVercel, SiSupabase, SiUnity, SiLinux,
-    SiDrizzle
+    SiPython, SiJavascript, SiTypescript, SiC, SiCplusplus, SiHtml5, SiCss3,
+    SiNextdotjs, SiNodedotjs, SiTailwindcss, SiOpencv, SiTensorflow,
+    SiGit, SiSqlite, SiDocker, SiVercel, SiSupabase, SiFlask, SiLinux,
+    SiDrizzle, SiMongodb, SiArduino
 } from 'react-icons/si'
 import { BsGithub } from 'react-icons/bs'
 import { Code, Database } from 'lucide-react'
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip'
+import { DiDjango } from "react-icons/di";
 
 function IconWithTooltip({children, label}: {children: React.ReactElement, label: string}) {
     return (
@@ -44,7 +45,7 @@ export default function Tech() {
                 <IconWithTooltip label="TypeScript"><SiTypescript size={20} className="text-[#1b263b]" /></IconWithTooltip>
                 <IconWithTooltip label="C"><SiC size={20} className="text-[#1b263b]" /></IconWithTooltip>
                 <IconWithTooltip label="C++"><SiCplusplus size={20} className="text-[#1b263b]" /></IconWithTooltip>
-                <IconWithTooltip label="C#"><SiSharp size={20} className="text-[#1b263b]" /></IconWithTooltip>
+                <IconWithTooltip label="Rust"><FaRust size={20} className="text-[#1b263b]" /></IconWithTooltip>
                 <IconWithTooltip label="Java"><FaJava size={20} className="text-[#1b263b]" /></IconWithTooltip>
             </TechGroup>
 
@@ -55,21 +56,22 @@ export default function Tech() {
                 <IconWithTooltip label="HTML5"><SiHtml5 size={20} className="text-[#1b263b]" /></IconWithTooltip>
                 <IconWithTooltip label="CSS3"><SiCss3 size={20} className="text-[#1b263b]" /></IconWithTooltip>
                 <IconWithTooltip label="Node.js"><SiNodedotjs size={20} className="text-[#1b263b]" /></IconWithTooltip>
-                <IconWithTooltip label="tRPC"><SiTrpc size={20} className="text-[#1b263b]" /></IconWithTooltip>
-                <IconWithTooltip label="Prisma"><SiPrisma size={20} className="text-[#1b263b]" /></IconWithTooltip>
+                <IconWithTooltip label="MongoDB"><SiMongodb size={20} className="text-[#1b263b]" /></IconWithTooltip>
                 <IconWithTooltip label="OpenCV"><SiOpencv size={20} className="text-[#1b263b]" /></IconWithTooltip>
-                <IconWithTooltip label="Drizzle"><SiDrizzle size={20} className="text-[#1b263b]" /></IconWithTooltip>
+                <IconWithTooltip label="TensorFlow"><SiTensorflow size={20} className="text-[#1b263b]" /></IconWithTooltip>
+                <IconWithTooltip label="Flask"><SiFlask size={20} className="text-[#1b263b]" /></IconWithTooltip>
+                <IconWithTooltip label="Django"><DiDjango size={20} className="text-[#1b263b]" /></IconWithTooltip>
             </TechGroup>
 
             <TechGroup title="Tools & Platforms">
                 <IconWithTooltip label="Git"><SiGit size={20} className="text-[#1b263b]" /></IconWithTooltip>
                 <IconWithTooltip label="GitHub"><BsGithub size={20} className="text-[#1b263b]" /></IconWithTooltip>
-                <IconWithTooltip label="PostgreSQL"><SiPostgresql size={20} className="text-[#1b263b]" /></IconWithTooltip>
+                <IconWithTooltip label="SQLite"><SiSqlite size={20} className="text-[#1b263b]" /></IconWithTooltip>
                 <IconWithTooltip label="Docker"><SiDocker size={20} className="text-[#1b263b]" /></IconWithTooltip>
                 <IconWithTooltip label="Vercel"><SiVercel size={20} className="text-[#1b263b]" /></IconWithTooltip>
                 <IconWithTooltip label="Supabase"><SiSupabase size={20} className="text-[#1b263b]" /></IconWithTooltip>
-                <IconWithTooltip label="Unity"><SiUnity size={20} className="text-[#1b263b]" /></IconWithTooltip>
                 <IconWithTooltip label="Linux"><SiLinux size={20} className="text-[#1b263b]" /></IconWithTooltip>
+                <IconWithTooltip label="Arduino"><SiArduino size={20} className="text-[#1b263b]" /></IconWithTooltip>
             </TechGroup>
         </div>
     )

@@ -44,12 +44,36 @@ export default function Home() {
   // Fun facts data
   const funFacts = [
     {
-      title: "test",
-      description: "test"
+      title: "pro gamer",
+      description: "i competed in professional valorant for 2 years (only 2000 hours)."
     },
     {
-      title: "test",
-      description: "test"
+      title: "biggest catch?",
+      description: "i have no idea actually i dont keep track.. probably a 9ft hammerhead."
+    },
+    {
+      title: "favorite book?",
+      description: "gonna have to go with The Brothers Karamazov by Dostoevsky.. alittle less basic maybe On War by Clausewitz."
+    },
+    {
+      title: "favorite song?",
+      description: "tough one.. right now probably Paint Me A Birmingham by Tracy Lawrence, or Tishomingo by Zach Bryan."
+    },
+    {
+      title: "favorite game?",
+      description: "OAT minecraft no doubt."
+    },
+    {
+      title: "dream car?",
+      description: "a lifted 1978 Chevy K-10 (OPEN MIND GUYS), not even close, next closest would have to be a porsche 918 spyder."
+    },
+    {
+      title: "favorite quote?",
+      description: "i like reading so i have a few but gonna go with 'from nothing, comes nothing' -Parmenides"
+    },
+    {
+      title: "first language?",
+      description: "PHP WOOOHOOOO!"
     }
   ];
 
@@ -65,7 +89,7 @@ export default function Home() {
       title: "on a boat",
       description: "Time on the water",
       image: "/onboat.jpg",
-      tooltip: "my family an i just chilling on the water"
+      tooltip: "(RTL) my cousin, moms husband, uncle, and I chilling on the water"
     }
   ];
 

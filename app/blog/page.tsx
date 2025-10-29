@@ -21,7 +21,7 @@ export default function Blog() {
           <TextContentCard
             title="KHVIII - a deepdive on my experience"
             date="Oct 2025"
-            tags={[""]}
+            tags={["hack", "from pov"]}
             description="in this post, i share my experiences while building ZPM-TUNA, winning pheratechs challenge, everything."
             expandedDescription={
               <div className="space-y-6">
@@ -49,7 +49,7 @@ export default function Blog() {
                 <section>
                   <h3 className="font-bold text-xl text-[#e0e1dd] mb-3">the plan...</h3>
                   <p className="mb-4">
-                    the plan was simple, two robots, they will have basic arduino motor functions and sensor readings and then ros2 will handle the learning and pathfinding. i knew phera was big on decentralization and creating module robots that work solo and with eachother and the same time but also at the same time i have 36 hours and about 200 dollars to spend. sooo.. the ros system is gonna have to handle most of it... but the way it works is a hierachel system where each robot has its own node for pathfinding and logic with a controller node that manages their messages and gives priority to what they should be doing at any given moment, eg an obstacle is found in a hallway like a fire, then the controller node will tell that drone to prioritize using another drones path to find the exit instead.. a good balance of modularity, learning, and pathfinding while keeping the power constraints (and money) in mind. that wouldve probably been pretty cool but my next section is where i almost combusted
+                    the plan was simple, two robots, they will have basic arduino motor functions and sensor readings and then ros2 will handle the learning and pathfinding. i knew phera was big on decentralization and creating modular robots that work solo and with eachother and the same time but also at the same time i have 36 hours and about 200 dollars to spend. sooo.. the ros system is gonna have to handle most of it... but the way it works is a hierachel system where each robot has its own node for pathfinding and logic with a controller node that manages their messages and gives priority to what they should be doing at any given moment, eg an obstacle is found in a hallway like a fire, then the controller node will tell that drone to prioritize using another drones path to find the exit instead.. a good balance of modularity, learning, and pathfinding while keeping the power constraints (and money) in mind. that wouldve probably been pretty cool but my next section is where i almost combusted
                   </p>
                 </section>
 

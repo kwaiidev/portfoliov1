@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 interface FunFact {
   title: string;
@@ -15,16 +15,49 @@ interface FunFactsCarouselProps {
 
 export default function FunFactsCarousel({ facts, className = "", title = "fun facts" }: FunFactsCarouselProps) {
   const [currentFact, setCurrentFact] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Auto-cycle through facts every 4 seconds
+  useEffect(() => {
+    if (!isPaused && facts.length > 1) {
+      intervalRef.current = setInterval(() => {
+        setCurrentFact((prev) => (prev + 1) % facts.length);
+      }, 4000);
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isPaused, facts.length]);
+
+  const pauseTemporarily = () => {
+    setIsPaused(true);
+    // Clear any existing pause timeout
+    if (pauseTimeoutRef.current) {
+      clearTimeout(pauseTimeoutRef.current);
+    }
+    // Resume after 4 seconds
+    pauseTimeoutRef.current = setTimeout(() => {
+      setIsPaused(false);
+    }, 4000);
+  };
 
   const nextFact = () => {
+    pauseTemporarily();
     setCurrentFact((prev) => (prev + 1) % facts.length);
   };
 
   const prevFact = () => {
+    pauseTemporarily();
     setCurrentFact((prev) => (prev - 1 + facts.length) % facts.length);
   };
 
   const goToFact = (index: number) => {
+    pauseTemporarily();
     setCurrentFact(index);
   };
 

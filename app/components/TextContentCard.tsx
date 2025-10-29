@@ -81,7 +81,10 @@ export default function TextContentCard({
             {tags && tags.length > 0 && (
               <div className="flex flex-wrap gap-2 mb-3">
                 {tags.map((tag, index) => (
-                  <span key={index} className="px-2 py-1 bg-[#0d1b2a]/10 text-[#e0e1dd] text-xs rounded-full border border-[#415a77]/20">
+                  <span
+                    key={index}
+                    className="px-3 py-1 bg-[#415a77]/30 text-[#e0e1dd] text-xs rounded-full border border-[#415a77]/40 shadow-sm"
+                  >
                     {tag}
                   </span>
                 ))}

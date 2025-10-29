@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -61,9 +62,11 @@ export default function Footer() {
                 className="text-[#e0e1dd]/80 hover:text-[#778da9] transition-colors"
                 aria-label="Resume"
               >
-                <img 
+                <Image 
                   src="/resume.svg" 
                   alt="Resume" 
+                  width={24}
+                  height={24}
                   className="w-6 h-6"
                 />
               </a>
