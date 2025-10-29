@@ -6,7 +6,7 @@ import {
     SiPython, SiJavascript, SiTypescript, SiC, SiCplusplus, SiHtml5, SiCss3,
     SiNextdotjs, SiNodedotjs, SiTailwindcss, SiOpencv, SiTensorflow,
     SiGit, SiSqlite, SiDocker, SiVercel, SiSupabase, SiFlask, SiLinux,
-    SiDrizzle, SiMongodb, SiArduino
+    SiMongodb, SiArduino
 } from 'react-icons/si'
 import { BsGithub } from 'react-icons/bs'
 import { Code, Database } from 'lucide-react'
