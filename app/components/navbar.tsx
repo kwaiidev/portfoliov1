@@ -166,7 +166,7 @@ export default function Navbar() {
                                 alt="Resume" 
                                 width={24}
                                 height={24}
-                                className="h-5 w-5 md:h-6 md:w-6"
+                                className="h-5 w-5 md:h-6 md:w-6 rounded-full"
                             />
                         </a>
                         

@@ -1,7 +1,7 @@
 declare module 'vanta/dist/vanta.waves.min.js' {
   interface VantaWavesOptions {
     el: HTMLElement;
-    THREE?: any;
+    THREE?: typeof import('three');
     mouseControls?: boolean;
     touchControls?: boolean;
     gyroControls?: boolean;

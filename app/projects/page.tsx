@@ -25,6 +25,14 @@ export default function Projects() {
       ]
     },
     {
+      title: "Portfolio",
+      tech: ["typescript", "next.js", "react", "tailwind", "framer", "HTML/CSS"],
+      description: "Developed a portfolio website that we are looking at right now",
+      expandedDescription: [
+        "Just my portfolio :P"
+      ]
+    },
+    {
       title: "essayAmplifier",
       tech: ["python", "django", "bootstrap", "aws", "sqlite", "docker", "git"],
       description: "Django-based web platform integrated with the OpenAI API, enabling users to enhance essays through dynamically generated NLP prompts.",

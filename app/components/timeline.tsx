@@ -46,7 +46,8 @@ export const dotVariants = {
 interface TimelineItem {
   title: string;
   subtitle?: string;
-  description: string[];
+  description: string;
+  expandedDescription?: string[];
   tech?: string[];
   date?: string;
 }
@@ -125,10 +126,10 @@ export default function Timeline({ title, items }: TimelineProps) {
                   subtitle={item.subtitle}
                   date={item.date}
                   tags={item.tech}
-                  description={`${item.description.slice(0, 2).join('. ')}${item.description.length > 2 ? '...' : ''}`}
-                  expandedDescription={item.description}
-                  expandable={true}
-                  className="w-full"
+                  description={item.description}
+                  expandedDescription={item.expandedDescription}
+                  expandable={!!item.expandedDescription}
+                  className="w-full max-w-xl h-64"
                 />
               </div>
             </motion.div>

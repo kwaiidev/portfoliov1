@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import Carousel from './Carousel';
+import { FiCircle, FiCode, FiFileText, FiMusic, FiLayers, FiLayout } from 'react-icons/fi';
 
 interface FunFact {
   title: string;
@@ -13,106 +14,61 @@ interface FunFactsCarouselProps {
   title?: string;
 }
 
+// Map fun fact titles to appropriate icons
+const getIconForFact = (title: string) => {
+  const lowerTitle = title.toLowerCase();
+  if (lowerTitle.includes('gamer') || lowerTitle.includes('game')) {
+    return <FiLayers className="carousel-icon" />;
+  }
+  if (lowerTitle.includes('catch') || lowerTitle.includes('fish')) {
+    return <FiCircle className="carousel-icon" />;
+  }
+  if (lowerTitle.includes('book')) {
+    return <FiFileText className="carousel-icon" />;
+  }
+  if (lowerTitle.includes('song') || lowerTitle.includes('music')) {
+    return <FiMusic className="carousel-icon" />;
+  }
+  if (lowerTitle.includes('car') || lowerTitle.includes('vehicle')) {
+    return <FiLayout className="carousel-icon" />;
+  }
+  if (lowerTitle.includes('quote')) {
+    return <FiFileText className="carousel-icon" />;
+  }
+  if (lowerTitle.includes('language') || lowerTitle.includes('php') || lowerTitle.includes('code')) {
+    return <FiCode className="carousel-icon" />;
+  }
+  // Default icon
+  return <FiCircle className="carousel-icon" />;
+};
+
 export default function FunFactsCarousel({ facts, className = "", title = "fun facts" }: FunFactsCarouselProps) {
-  const [currentFact, setCurrentFact] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-  // Auto-cycle through facts every 4 seconds
-  useEffect(() => {
-    if (!isPaused && facts.length > 1) {
-      intervalRef.current = setInterval(() => {
-        setCurrentFact((prev) => (prev + 1) % facts.length);
-      }, 4000);
-    }
-
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, [isPaused, facts.length]);
-
-  const pauseTemporarily = () => {
-    setIsPaused(true);
-    // Clear any existing pause timeout
-    if (pauseTimeoutRef.current) {
-      clearTimeout(pauseTimeoutRef.current);
-    }
-    // Resume after 4 seconds
-    pauseTimeoutRef.current = setTimeout(() => {
-      setIsPaused(false);
-    }, 4000);
-  };
-
-  const nextFact = () => {
-    pauseTemporarily();
-    setCurrentFact((prev) => (prev + 1) % facts.length);
-  };
-
-  const prevFact = () => {
-    pauseTemporarily();
-    setCurrentFact((prev) => (prev - 1 + facts.length) % facts.length);
-  };
-
-  const goToFact = (index: number) => {
-    pauseTemporarily();
-    setCurrentFact(index);
-  };
+  // Map facts to carousel items format
+  const carouselItems = facts.map((fact, index) => ({
+    title: fact.title,
+    description: fact.description,
+    id: index + 1,
+    icon: getIconForFact(fact.title)
+  }));
 
   return (
     <div className={`space-y-4 ${className}`}>
-      {/* Title */}
-      <h2 className="text-2xl md:text-3xl font-bold text-[#e0e1dd] mb-4">{title}</h2>
-      
-      {/* Fun facts panel */}
-      <div className="bg-white/20 backdrop-blur-sm rounded-2xl p-6 h-48 flex items-center justify-center">
-        {/* Current fact display */}
-        <div className="text-center">
-          <h3 className="text-lg font-semibold mb-2 text-[#e0e1dd]">
-            {facts[currentFact].title}
-          </h3>
-          <p className="text-sm text-[#e0e1dd]">
-            {facts[currentFact].description}
-          </p>
-        </div>
-      </div>
-      
-      {/* Navigation controls - outside the panel */}
-      <div className="flex items-center justify-center space-x-4">
-        {/* Previous button */}
-        <button 
-          onClick={prevFact}
-          className="p-2 scale-110 hover:scale-125 transition-transform"
-        >
-          <svg className="w-4 h-4 text-[#e0e1dd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-        </button>
-        
-        {/* Dots */}
-        <div className="flex items-center space-x-2">
-          {facts.map((_, index) => (
-            <button 
-              key={index}
-              onClick={() => goToFact(index)}
-              className={`rounded-full transition-all ${
-                currentFact === index ? 'w-3 h-3 bg-[#F0EBD8]' : 'w-2 h-2 bg-[#F0EBD8]/40'
-              }`}
-            />
-          ))}
-        </div>
-        
-        {/* Next button */}
-        <button 
-          onClick={nextFact}
-          className="p-2 scale-110 hover:scale-125 transition-transform"
-        >
-          <svg className="w-4 h-4 text-[#e0e1dd]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-          </svg>
-        </button>
+      {title && (
+        <h2 className="text-xl font-semibold text-[#e0e1dd] capitalize">
+          {title}
+        </h2>
+      )}
+      {/* Carousel */}
+      <div className="relative h-96 flex items-center justify-center">
+        <Carousel
+          items={carouselItems}
+          baseWidth={400}
+          autoplay={true}
+          autoplayDelay={3000}
+          pauseOnHover={true}
+          loop={true}
+          round={false}
+        />
       </div>
     </div>
   );
