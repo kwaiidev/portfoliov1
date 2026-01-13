@@ -11,6 +11,14 @@ export default function Experience() {
             title="experience" 
           items={[
             {
+              title: "researcher",
+              subtitle: "Knights Scholars Research Program",
+              date: "Oct. 2025 - Present",
+              description: "Conducting research on security and fault tolerance of LLMs for embedded systems.",
+              expandedDescription:["Conducted research on security and fault tolerance of LLMs for embedded systems, evaluating the impact of soft errors and adversarial attacks using real hardware and Gem5 simulation",
+              "Analyzed mitigation strategies for LLM vulnerabilities, including memory bit-flip attacks and novel embedded-specific attack vectors, across platforms such as embedded boards and mobile devices (Android/iOS)"]
+            },
+            {
               title: "president",
               subtitle: "Florida Elite Athletics",
               date: "2025 - present",
@@ -32,7 +40,7 @@ export default function Experience() {
             },
             {
               title: "software engineer intern",
-              subtitle: "blackstone",
+              subtitle: "Blackstone",
               date: "apr 2024 - sept 2024",
               description: "Invited as 1 of 20 university students to gain insight and mentorship from engineers at Blackstone.",
               expandedDescription: [
@@ -53,7 +61,7 @@ export default function Experience() {
             },
             {
               title: "division lead",
-              subtitle: "mdc esports",
+              subtitle: "MDC eSports",
               date: "jan 2023 - dec 2023",
               description: "Orchestrated and coordinated all project phases, managing large-scale events with up to 30 attendees.",
               expandedDescription: [
