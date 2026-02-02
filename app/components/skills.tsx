@@ -9,7 +9,7 @@ import {
     SiMongodb, SiArduino
 } from 'react-icons/si'
 import { BsGithub } from 'react-icons/bs'
-import { Code, Database } from 'lucide-react'
+import { Code, Database, Library } from 'lucide-react'
 import { Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip'
 import { DiDjango } from "react-icons/di";
 
@@ -26,7 +26,7 @@ const TechGroup = ({ title, children }: { title: string; children: React.ReactNo
     <div className="border border-[#415a77]/30 rounded-md p-3 sm:p-4 bg-[#e0e1dd]/60 bg-opacity-100">
         <h3 className="text-sm sm:text-base font-medium mb-3 text-[#0d1b2a] lowercase flex items-center">
             {title === "Languages" && <Code className="inline mr-2 text-[#415a77]" size={18} />}
-            {title === "Frameworks/Libraries" && <Database className="inline mr-2 text-[#415a77]" size={18} />}
+            {title === "Technologies" && <Library className="inline mr-2 text-[#415a77]" size={18} />}
             {title === "Tools & Platforms" && <Database className="inline mr-2 text-[#415a77]" size={18} />}
             {title}
         </h3>
@@ -49,7 +49,7 @@ export default function Tech() {
                 <IconWithTooltip label="Java"><FaJava size={20} className="text-[#1b263b]" /></IconWithTooltip>
             </TechGroup>
 
-            <TechGroup title="Frameworks/Libraries">
+            <TechGroup title="Technologies">
                 <IconWithTooltip label="React"><FaReact size={20} className="text-[#1b263b]" /></IconWithTooltip>
                 <IconWithTooltip label="Next.js"><SiNextdotjs size={20} className="text-[#1b263b]" /></IconWithTooltip>
                 <IconWithTooltip label="Tailwind CSS"><SiTailwindcss size={20} className="text-[#1b263b]" /></IconWithTooltip>
