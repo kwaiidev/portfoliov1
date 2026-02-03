@@ -5,7 +5,6 @@
   border-radius: 1rem;
   padding: 16px;
   background: rgba(13, 27, 42, 0);
-  backdrop-filter: blur(10px);
   --outer-r: 24px;
   --p-distance: 12px;
 }

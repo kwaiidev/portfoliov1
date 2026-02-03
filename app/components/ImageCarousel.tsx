@@ -81,7 +81,10 @@ export default function ImageCarousel({ slides, className = "", showTooltips = t
   return (
     <div className={`space-y-4 ${className}`}>
       {/* Carousel container */}
-      <div ref={containerRef} className={`relative ${containerHeightClass} rounded-2xl overflow-hidden`}>
+      <div
+        ref={containerRef}
+        className={`relative ${containerHeightClass} rounded-xl overflow-hidden bg-[#0d1b2a]/40 border border-[#415a77]/30`}
+      >
         {/* Slides */}
         <div className="relative h-full overflow-hidden">
           <motion.div 
@@ -97,14 +100,14 @@ export default function ImageCarousel({ slides, className = "", showTooltips = t
               const btnTop = Math.max(0, box.y + box.h - btnSize - margin);
               return (
                 <div key={index} className="min-w-full h-full relative">
-                  <div className={`absolute inset-0 ${mode !== 'cover' ? 'flex items-center justify-center' : ''}`}>
+                  <div className={`absolute inset-0 ${mode !== 'cover' ? 'flex items-center justify-center' : ''} rounded-xl overflow-hidden`}>
                     <Image 
                       src={slide.image} 
                       alt={slide.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1280px) 80vw, 1024px"
                       priority={index === 0}
-                      className={mode === 'cover' ? 'object-cover' : 'object-contain'}
+                      className={`${mode === 'cover' ? 'object-cover' : 'object-contain'} rounded-xl`}
                       style={slide.objectPosition ? { objectPosition: slide.objectPosition } : undefined}
                       onLoadingComplete={(img: { naturalWidth: number; naturalHeight: number }) => {
                         const w = img.naturalWidth ?? 0;

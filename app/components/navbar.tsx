@@ -28,12 +28,16 @@ export default function Navbar() {
             
             setLastScrollY(currentScrollY);
 
-            // Only update active section if we're on the home page
-            if (pathname === '/') {
-                const sections = ['home', 'about'];
-                const sectionElements = sections.map(section => 
-                    document.getElementById(section)
-                ).filter(Boolean);
+            // Update active section based on current page sections
+            const sectionsByPath: Record<string, string[]> = {
+                '/': ['home'],
+                '/about': ['about', 'hobbies', 'skills']
+            };
+            const sections = sectionsByPath[pathname] ?? [];
+            if (sections.length > 0) {
+                const sectionElements = sections
+                    .map(section => document.getElementById(section))
+                    .filter(Boolean);
 
                 let current = '';
                 sectionElements.forEach(section => {
@@ -55,8 +59,16 @@ export default function Navbar() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, [lastScrollY, pathname]);
 
+    useEffect(() => {
+        if (pathname === '/about') {
+            setActiveSection('about');
+        } else if (pathname === '/') {
+            setActiveSection('home');
+        }
+    }, [pathname]);
+
     const getActiveSection = () => {
-        if (pathname === '/') {
+        if (pathname === '/' || pathname === '/about') {
             return activeSection;
         } else if (pathname === '/experience') {
             return 'career';
@@ -70,7 +82,7 @@ export default function Navbar() {
 
     const navItems = [
         { id: 'home', label: 'Home', href: '/' },
-        { id: 'about', label: 'About', href: '/#about' },
+        { id: 'about', label: 'About', href: '/about' },
         { id: 'career', label: 'Experience', href: '/experience' },
         { id: 'projects', label: 'Projects', href: '/projects' },
         { id: 'blog', label: 'Blog', href: '/blog' }

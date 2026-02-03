@@ -2,8 +2,14 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
 export default function Footer() {
+  const pathname = usePathname();
+  if (pathname === '/') {
+    return null;
+  }
+
   return (
     <footer className="bg-[#0d1b2a] text-[#e0e1dd] py-4">
       <div className="max-w-7xl mx-auto px-8">
