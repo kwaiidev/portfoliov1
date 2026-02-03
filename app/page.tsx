@@ -27,10 +27,10 @@ export default function Home() {
   // Carousel data
   const carouselSlides = [
     {
-      title: "Flanigans",
+      title: "Thanksgiving",
       description: "check",
       image: "/adriandi.jpg",
-      tooltip: "My girlfriend and I at our (my) favorite restaurant, Flanigans"
+      tooltip: "My girlfriend, Adriana, and I at my family's Thanksgiving dinner"
     },
     {
       title: "SJ Sharks Game",
@@ -138,19 +138,7 @@ export default function Home() {
           </motion.p>
           
           {/* Scroll down hint */}
-          <motion.div
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-          >
-            <div className="w-6 h-10 border-2 border-white/70 rounded-full flex justify-center">
-              <motion.div
-                className="w-1 h-3 bg-white rounded-full mt-2"
-                animate={{ y: [0, 12, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-            </div>
-          </motion.div>
+
         </motion.div>
         
         <motion.div 
@@ -307,10 +295,7 @@ export default function Home() {
               >
                 {/* Animated background gradient */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#1b263b]/20 to-[#0d1b2a]/40 rounded-2xl"></div>
-                
-                {/* Animated border glow */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#778da9]/20 via-[#415a77]/30 to-[#778da9]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-sm"></div>
-                
+                                
                 {/* Content */}
                 <div className="relative z-10">
                   <Tech />

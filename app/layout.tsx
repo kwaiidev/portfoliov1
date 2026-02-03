@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
     title: "kwaiidev",
-    description: "Personal site",
+    description: "Jason Sacerio is a third year computer science and math student at the University of Central Florida. He is a software engineer with a focus on low-level programming and system development. He is also the current Treasurer of Knight Hacks and Researcher at Knights Scholars Research Program.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

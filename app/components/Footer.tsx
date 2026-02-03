@@ -67,7 +67,7 @@ export default function Footer() {
                   alt="Resume" 
                   width={24}
                   height={24}
-                  className="w-6 h-6 rounded-full"
+                  className="w-6 h-6"
                 />
               </a>
             </div>

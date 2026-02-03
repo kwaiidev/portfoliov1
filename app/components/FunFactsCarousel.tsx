@@ -53,11 +53,6 @@ export default function FunFactsCarousel({ facts, className = "", title = "fun f
 
   return (
     <div className={`space-y-4 ${className}`}>
-      {title && (
-        <h2 className="text-xl font-semibold text-[#e0e1dd] capitalize">
-          {title}
-        </h2>
-      )}
       {/* Carousel */}
       <div className="relative h-96 flex items-center justify-center">
         <Carousel
