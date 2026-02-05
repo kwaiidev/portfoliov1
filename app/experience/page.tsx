@@ -11,22 +11,20 @@ export default function Experience() {
             title="experience" 
           items={[
             {
+              title: "treasurer",
+              subtitle: "Knight Hacks",
+              date: "Jan 2026 - Present",
+              description: "Actively managing the financials and operations of Knight Hacks, the largest technical organization at UCF",
+              expandedDescription: ["Managing all one step of at a time"]
+            },
+            {
               title: "researcher",
               subtitle: "Knights Scholars Research Program",
+              tech: ["python", "C++", "ROS2", "QEMU", "LlamaGPT"],
               date: "Oct. 2025 - Present",
               description: "Conducting research on security and fault tolerance of LLMs for embedded systems.",
               expandedDescription:["Conducted research on security and fault tolerance of LLMs for embedded systems, evaluating the impact of soft errors and adversarial attacks using real hardware and Gem5 simulation",
               "Analyzed mitigation strategies for LLM vulnerabilities, including memory bit-flip attacks and novel embedded-specific attack vectors, across platforms such as embedded boards and mobile devices (Android/iOS)"]
-            },
-            {
-              title: "president",
-              subtitle: "Florida Elite Athletics",
-              date: "2025 - present",
-              description: "Help under served athletes around South Florida get the resources needed to succeed.",
-              expandedDescription: [
-                "Help under served athletes around South Florida get the resources needed to succeed.",
-                "Work with a team of 4 to create dreams come true for kids in the community of Broward County."
-              ]
             },
             {
               title: "founder",
@@ -39,8 +37,19 @@ export default function Experience() {
               ]
             },
             {
+              title: "president",
+              subtitle: "Florida Elite Athletics",
+              date: "Dec 2024 - Feb 2026",
+              description: "Help under served athletes around South Florida get the resources needed to succeed.",
+              expandedDescription: [
+                "Help under served athletes around South Florida get the resources needed to succeed.",
+                "Work with a team of 4 to create dreams come true for kids in the community of Broward County."
+              ]
+            },
+            {
               title: "software engineer intern",
               subtitle: "Blackstone",
+              tech: ["python", "pandas", "numpy", "SQL"],
               date: "apr 2024 - sept 2024",
               description: "Invited as 1 of 20 university students to gain insight and mentorship from engineers at Blackstone.",
               expandedDescription: [
