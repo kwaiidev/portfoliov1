@@ -23,12 +23,6 @@ export default function AboutPage() {
    // Carousel data
    const carouselSlides = [
      {
-       title: "Thanksgiving",
-       description: "check",
-       image: "/adriandi.jpg",
-       tooltip: "My girlfriend, Adriana, and I at my family's Thanksgiving dinner"
-     },
-     {
         title: "fishing",
         description: "Underwater hunting and fishing",
         image: "/bigcatch.jpg",
