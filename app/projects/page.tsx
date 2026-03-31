@@ -6,6 +6,17 @@ import TextContentCard from '../components/TextContentCard';
 export default function Projects() {
   const projects = [
     {
+      title: "Guido",
+      tech: ["C++", "ROS2", "Google ADK", "Python", "SLAM", "NVIDIA SDK", "Jetson Orin Nano"],
+      description: "An autonomous wheelchair that can navigate using SLAM and waypoints.",
+      expandedDescription: [
+        "Built an autonomous, voice-controlled wheelchair system from scratch using ROS 2 (Humble), LiDAR-based SLAM, and Nav2 on an NVIDIA Jetson Orin Nano, enabling real-time map generation, obstacle avoidance, and waypoint navigation without joystick input",
+        "Engineered a layered autonomy architecture with separated command handling, supervisory logic, and Nav2 execution nodes, implementing frontier-based exploration that clusters and ranks candidates by path cost and information gain, with health monitoring across scan, odometry, and TF systems for fail-safe behavior",
+        "Developed a full-stack voice-to-motion pipeline integrating Vosk/ElevenLabs speech recognition with a lightweight agent layer to translate natural language commands (direct and high-level) into real-time motor control via a serial bridge between Jetson and Arduino, targeting independence for the 1 in 4 Americans living with a disability"
+      ],
+      award: "Most Innovative Hack @ HackUSF 2026"
+    },
+    {
       title: "Conduit",
       tech: ["python", "opencv", "fastAPI", "flaskapi", "xgboost", "pytorch"],
       description: "a modular EEG/CV/AI agent accessibility system that allows computer control through voice, eye tracking, EEG, and ASL recognition.",
@@ -20,7 +31,7 @@ export default function Projects() {
     },
     {
       title: "ZPM-TUNA",
-      tech: ["ros2", "opencv", "python", "arduino", "gazebo"],
+      tech: ["ros2", "C++", "opencv", "python", "arduino", "gazebo"],
       description: "created autonomous drones that can navigate through a maze and find exits while learning off of eachother",
       expandedDescription: [
         "ROS2 based autonomous drones that can navigate through burning buildings to find exits while learning.",
