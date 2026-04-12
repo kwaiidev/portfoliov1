@@ -15,7 +15,7 @@ export default function Experience() {
               subtitle: "incoming @ ???",
               tech: ["C++", "ROS2", "gazebo", "NAV2"],
               date: "May 2026 - August 2026",
-              description: "cool autonomous stuff",
+              description: "cool autonomous stuff                                                                                        ",
               expandedDescription: ["making drone talk to eachother"]
             },
             {
