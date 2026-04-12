@@ -107,7 +107,7 @@ export default function Timeline({ title, items }: TimelineProps) {
           {items.map((item, index) => (
             <motion.div
               key={index}
-              className="relative flex items-start"
+              className="relative flex items-start w-full"
               variants={itemVariants}
               transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
             >
@@ -120,7 +120,7 @@ export default function Timeline({ title, items }: TimelineProps) {
               />
 
               {/* Content card */}
-              <div className="ml-12">
+              <div className="ml-12 w-full">
                 <TextContentCard
                   title={item.title}
                   subtitle={item.subtitle}
