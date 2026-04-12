@@ -11,6 +11,14 @@ export default function Experience() {
             title="experience" 
           items={[
             {
+              title: "software engineer intern",
+              subtitle: "???",
+              tech: ["C++", "ROS2", "gazebo", "NAV2"],
+              date: "May 2026 - August 2026",
+              description: "incomign @ ???",
+              expandedDescription: ["making drone talk to eachother "]
+            },
+            {
               title: "treasurer",
               subtitle: "Knight Hacks",
               date: "Jan 2026 - Present",
