@@ -1,118 +1,56 @@
-'use client';
-import { motion } from 'framer-motion';
-import CSSWaves from '../components/CSSWaves';
-import TextContentCard from '../components/TextContentCard';
+import { existsSync, readdirSync } from 'fs';
+import { join } from 'path';
+import ProjectsClient, { type Project } from './ProjectsClient';
+import { projects } from './projects-data';
+
+const imageExtensions = new Set(['.jpg', '.jpeg', '.png', '.webp']);
+const projectsImageRoot = join(process.cwd(), 'public', 'projects');
+const collator = new Intl.Collator('en', { numeric: true, sensitivity: 'base' });
+
+function isProjectImage(fileName: string) {
+  const extension = fileName.slice(fileName.lastIndexOf('.')).toLowerCase();
+
+  return imageExtensions.has(extension);
+}
+
+function sortImages(images: string[]) {
+  return images.sort((first, second) => {
+    const firstName = first.split('/').pop() ?? first;
+    const secondName = second.split('/').pop() ?? second;
+
+    return collator.compare(firstName, secondName);
+  });
+}
+
+function getProjectImages(slug: string) {
+  if (!existsSync(projectsImageRoot)) {
+    return [];
+  }
+
+  const directImages = readdirSync(projectsImageRoot, { withFileTypes: true })
+    .filter((entry) => entry.isFile())
+    .map((entry) => entry.name)
+    .filter((fileName) => isProjectImage(fileName))
+    .filter((fileName) => fileName.startsWith(`${slug}.`) || fileName.startsWith(`${slug}-`))
+    .map((fileName) => `/projects/${fileName}`);
+
+  const projectFolder = join(projectsImageRoot, slug);
+  const folderImages = existsSync(projectFolder)
+    ? readdirSync(projectFolder, { withFileTypes: true })
+      .filter((entry) => entry.isFile())
+      .map((entry) => entry.name)
+      .filter((fileName) => isProjectImage(fileName))
+      .map((fileName) => `/projects/${slug}/${fileName}`)
+    : [];
+
+  return sortImages([...directImages, ...folderImages]);
+}
 
 export default function Projects() {
-  const projects = [
-    {
-      title: "Guido",
-      tech: ["C++", "ROS2", "Google ADK", "Python", "SLAM", "NVIDIA SDK", "Jetson Orin Nano"],
-      description: "An autonomous wheelchair that can navigate using SLAM and waypoints.",
-      expandedDescription: [
-        "Built an autonomous, voice-controlled wheelchair system from scratch using ROS 2 (Humble), LiDAR-based SLAM, and Nav2 on an NVIDIA Jetson Orin Nano, enabling real-time map generation, obstacle avoidance, and waypoint navigation without joystick input",
-        "Engineered a layered autonomy architecture with separated command handling, supervisory logic, and Nav2 execution nodes, implementing frontier-based exploration that clusters and ranks candidates by path cost and information gain, with health monitoring across scan, odometry, and TF systems for fail-safe behavior",
-        "Developed a full-stack voice-to-motion pipeline integrating Vosk/ElevenLabs speech recognition with a lightweight agent layer to translate natural language commands (direct and high-level) into real-time motor control via a serial bridge between Jetson and Arduino, targeting independence for the 1 in 4 Americans living with a disability"
-      ],
-      award: "Most Innovative Hack @ HackUSF 2026"
-    },
-    {
-      title: "Conduit",
-      tech: ["python", "opencv", "fastAPI", "flaskapi", "xgboost", "pytorch"],
-      description: "a modular EEG/CV/AI agent accessibility system that allows computer control through voice, eye tracking, EEG, and ASL recognition.",
-      expandedDescription: [
-        "Eye Tracking: 478 facial landmarks extracted per frame. 3D iris vectors projected onto a calibrated monitor plane, One euro filter for adaptive smoothing.",
-        "STT Audio captured and sent to ElevenLabs, intent classification via Gemini, events are then emitted asynchronously to prevent blocking. ",
-        "ASL Vision Model: Custom channel attention modules Balanced augmented dataset prediction smoothing to avoid false positives",
-        "EEG Muse headset streaming, 256 sample sliding windows 10 engineered features per channel 1-45hz bandpass filtering majority vote stabilization buffer.",
-        "Electron based application with option for overlay"
-      ],
-      award: "Healthcare 2nd Hacklytics @ GT 2026"
-    },
-    {
-      title: "ZPM-TUNA",
-      tech: ["ros2", "C++", "opencv", "python", "arduino", "gazebo"],
-      description: "created autonomous drones that can navigate through a maze and find exits while learning off of eachother",
-      expandedDescription: [
-        "ROS2 based autonomous drones that can navigate through burning buildings to find exits while learning.",
-        "Used flutter to create a mobile app that allows users to escape fires with said paths."
-      ],
-      award: "Pheratech 1st KHVIII @ UCF 2025"
-    },
-    {
-      title: "face2learn",
-      tech: ["python", "opencv", "face-recognition", "dlib", "tkinter"],
-      description: "Developed a facial recognition system using OpenCV and Dlib to track face movements and gestures in real-time.",
-      expandedDescription: [
-        "Developed a facial recognition system using OpenCV and Dlib to track face movements and gestures in real-time, enabling users to interact with virtual objects and control them using facial expressions.",
-        "Implemented a real-time face tracking algorithm that continuously analyzes video input, identifying and tracking faces in real-time, allowing for smooth and accurate interaction with virtual environments."
-      ]
-    },
-    {
-      title: "Portfolio",
-      tech: ["typescript", "next.js", "react", "tailwind", "framer", "HTML/CSS"],
-      description: "Developed a portfolio website that we are looking at right now",
-      expandedDescription: [
-        "Just my portfolio :P"
-      ]
-    },
-    {
-      title: "essayAmplifier",
-      tech: ["python", "django", "bootstrap", "aws", "sqlite", "docker", "git"],
-      description: "Django-based web platform integrated with the OpenAI API, enabling users to enhance essays through dynamically generated NLP prompts.",
-      expandedDescription: [
-        "Django-based web platform integrated with the OpenAI API, enabling users to enhance essays through dynamically generated NLP prompts tailored for grammar, style, and clarity improvements.",
-        "Implemented a MongoDB-backed data pipeline for storing user submissions, prompt-response mappings, and usage analytics, optimizing query performance and ensuring scalable handling of high-volume API interactions."
-      ]
-    },
-    {
-      title: "swaghack",
-      tech: ["c++", "java", "ida pro"],
-      description: "Engineered a proof-of-concept kernel-mode driver to simulate undetected memory modifications in anti-cheat systems.",
-      expandedDescription: [
-        "Engineered a proof-of-concept kernel-mode driver to simulate undetected memory modifications in the Lunar Client Anticheat on Minecraft, reproducing techniques real cheats use to evade anti-cheat detection and stress-test server security controls.",
-        "Conducted controlled testing in a private environment, identifying weaknesses in detection logic and recommending enhanced telemetry and validation mechanisms to strengthen overall anti-cheat effectiveness."
-      ]
-    },
-  ];
+  const projectsWithImages: Project[] = projects.map((project) => ({
+    ...project,
+    images: getProjectImages(project.slug),
+  }));
 
-
-  return (
-    <CSSWaves className="relative min-h-screen">
-      <div className="min-h-screen py-20 px-4 md:px-8 lg:px-16">
-        <div className="max-w-9xl mx-auto">
-          {/* Title */}
-          <motion.h1 
-            className="text-4xl md:text-5xl font-bold text-[#e0e1dd] mb-12 text-center"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            projects
-          </motion.h1>
-
-          {/* Projects Grid - 5 columns on large screens */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
-            {projects.map((project, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-              >
-                <TextContentCard
-                  title={project.title}
-                  tags={project.tech}
-                  description={project.description}
-                  expandedDescription={project.expandedDescription}
-                  expandable={true}
-                  award={project.award}
-                />
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </CSSWaves>
-  );
+  return <ProjectsClient projects={projectsWithImages} />;
 }
