@@ -13,7 +13,7 @@ export const projects: ProjectBase[] = [
   {
     title: 'Guido',
     slug: 'guido',
-    category: 'Autonomomous Drones',
+    category: 'Robotics',
     tech: ['C++', 'ROS2', 'Google ADK', 'Python', 'SLAM', 'NVIDIA SDK', 'Jetson Orin Nano'],
     description: 'An autonomous wheelchair that can navigate using SLAM, waypoints, and natural voice commands.',
     expandedDescription: [
@@ -40,7 +40,7 @@ export const projects: ProjectBase[] = [
   {
     title: 'ZPM-TUNA',
     slug: 'zpm-tuna',
-    category: 'Autonomous Drones',
+    category: 'Robotics',
     tech: ['ROS2', 'C++', 'OpenCV', 'Python', 'Arduino', 'Gazebo'],
     description: 'Autonomous drones that navigate mazes, find exits, and share what they learn with each other.',
     expandedDescription: [
