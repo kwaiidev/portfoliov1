@@ -42,7 +42,6 @@ function ProjectImage({ project, priority = false }: { project: Project; priorit
           <ImageIcon className="h-10 w-10" aria-hidden="true" />
         </div>
       )}
-
       {canCarousel && (
         <>
           <div className="absolute inset-y-0 left-0 right-0 flex items-center justify-between px-3">
@@ -63,7 +62,6 @@ function ProjectImage({ project, priority = false }: { project: Project; priorit
               <ChevronRight className="h-5 w-5" aria-hidden="true" />
             </button>
           </div>
-
           <p className="absolute bottom-3 right-3 bg-[#0d1b2a]/80 px-2 py-1 font-mono text-xs text-[#e0e1dd]/75">
             {imageIndex + 1}/{project.images.length}
           </p>
@@ -88,23 +86,13 @@ function ProjectEntry({ project, priority = false }: { project: Project; priorit
           <p className="mt-3 break-words text-[#e0e1dd]/75">{project.description}</p>
         </div>
       </div>
-
       <div className="sm:ml-[8rem]">
         <ProjectImage project={project} priority={priority} />
 
-        <p className="mt-4 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs text-[#778da9]/80">
-          {project.tech.map((tech) => (
-            <span key={tech}>{tech}</span>
-          ))}
-        </p>
-
-        <section className="mt-5">
-          <h3 className="font-mono text-sm text-[#778da9]">build notes</h3>
-          <ul className="mt-3 space-y-2 text-[#e0e1dd]/60">
-            {project.expandedDescription.map((item) => (
-              <li key={item} className="break-words">- {item}</li>
-            ))}
-          </ul>
+        <p className="mt-4 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs text-[#778da9]/80">{project.tech.map((tech) => (<span key={tech}>{tech}</span>))}</p>
+        <section className="mt-5 border-t border-[#415a77]/45 p t-5">
+          <h3 className="font-mono mt-2 text-sm text-[#778da9]">build notes</h3>
+          <ul className="mt-3 space-y-2 text-[#e0e1dd]/60">{project.expandedDescription.map((item) => (<li key={item} className="break-words">- {item}</li>))}</ul>
         </section>
       </div>
     </article>
@@ -118,17 +106,9 @@ export default function ProjectsClient({ projects }: { projects: Project[] }) {
         <Link href="/" className="font-mono text-sm text-[#778da9] hover:text-[#f0ebd8]">
           ../home
         </Link>
-
-        <h1 className="mt-10 text-4xl font-semibold text-[#f0ebd8] sm:text-5xl">projects.md</h1>
-        <p className="mt-3 break-words font-mono text-sm leading-6 text-[#e0e1dd]/60">
-          robotics, accessibility, web, systems, and the occasional questionable idea
-        </p>
-
-        <section className="mt-10 divide-y divide-[#415a77]/45 border-t border-[#415a77]/45">
-          {projects.map((project, index) => (
-            <ProjectEntry key={project.slug} project={project} priority={index === 0} />
-          ))}
-        </section>
+        <h1 className="mt-10 text-4xl font-semibold text-[#f0ebd8] sm:text-5xl">projects</h1>
+        <p className="mt-3 break-words font-mono text-sm leading-6 text-[#e0e1dd]/60">fun stuff</p>
+        <section className="mt-10 border-t border-[#415a77]/45 pt-6">{projects.map((project, index) => (<ProjectEntry key={project.slug} project={project} priority={index === 0} />))}</section>
       </section>
     </main>
   );
