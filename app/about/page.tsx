@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 const notes = [
   ['school', 'cs + math @ UCF'],
-  ['focus', 'systems programming, robotics, accessibility'],
-  ['now', 'building autonomous stuff + treasurer @ Knight Hacks'],
+  ['focus', 'systems programming, robotics'],
+  ['current', 'incoming @ ??? + treasurer @ Knight Hacks'],
 ];
 
 const interests = [
@@ -17,26 +17,18 @@ export default function AboutPage() {
   return (
     <main id="about" className="overflow-x-hidden bg-[#0d1b2a] px-5 pb-12 pt-28 text-[#e0e1dd] sm:px-8">
       <section className="mx-auto w-full max-w-[20.5rem] sm:max-w-2xl">
-        <Link href="/" className="font-mono text-sm text-[#778da9] hover:text-[#f0ebd8]">
-          ../home
-        </Link>
-
+        <Link href="/" className="font-mono text-sm text-[#778da9] hover:text-[#f0ebd8]">../home</Link>
         <h1 className="mt-5 text-4xl font-semibold text-[#f0ebd8] sm:text-5xl">about</h1>
-        <p className="mt-3 break-words font-mono text-sm leading-6 text-[#e0e1dd]/60">
-          Jason Sacerio
-        </p>
+        <p className="mt-3 break-words font-mono text-sm leading-6 text-[#e0e1dd]/60">me</p>
 
         <section className="mt-10 border-t border-[#415a77]/45 pt-6">
           <div className="space-y-5 text-sm leading-7 text-[#e0e1dd]/75 sm:text-base">
             <p>
               I&apos;m a computer science and math student at UCF who likes building close to the machine.
             </p>
-            <p>
-              Most of my work sits around systems, robotics, and tools that make technology easier for people to use.
-            </p>
+            <p>Most of my work sits around systems, robotics, and tools that make technology easier for people to use.</p>
           </div>
         </section>
-
         <section className="mt-10">
           <h2 className="font-mono text-sm text-[#778da9]">quick notes</h2>
           <ul className="mt-4 space-y-3 text-sm leading-6">

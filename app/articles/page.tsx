@@ -177,7 +177,7 @@ export default function ArticlesPage() {
           ../home
         </Link>
 
-        <h1 className="mt-10 text-4xl font-semibold text-[#f0ebd8] sm:text-5xl">articles.md</h1>
+        <h1 className="mt-10 text-4xl font-semibold text-[#f0ebd8] sm:text-5xl">articles</h1>
         <p className="mt-3 break-words font-mono text-sm leading-6 text-[#e0e1dd]/60">
           stuff ive learned or blog
         </p>

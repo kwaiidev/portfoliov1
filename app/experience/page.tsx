@@ -98,9 +98,8 @@ export default function ExperiencePage() {
         <Link href="/" className="font-mono text-sm text-[#778da9] hover:text-[#f0ebd8]">
           ../home
         </Link>
-
-        <h1 className="mt-10 text-4xl font-semibold text-[#f0ebd8] sm:text-5xl">experience.md</h1>
-        <p className="mt-3 break-words font-mono text-sm leading-6 text-[#e0e1dd]/60">work, research, clubs, and other things that became work somehow</p>
+        <h1 className="mt-10 text-4xl font-semibold text-[#f0ebd8] sm:text-5xl">experience</h1>
+        <p className="mt-3 break-words font-mono text-sm leading-6 text-[#e0e1dd]/60">work, research</p>
         <section className="mt-10 border-t border-[#415a77]/45 pt-6">
           <ul className="space-y-10">
             {experience.map((item) => (
@@ -120,9 +119,7 @@ export default function ExperiencePage() {
                     ))}
                   </p>
                 )}
-
                 <p className="mt-4 break-words text-[#e0e1dd]/75">{item.description}</p>
-
                 <ul className="mt-3 space-y-2 text-[#e0e1dd]/60">
                   {item.details.map((detail) => (
                     <li key={detail} className="break-words">- {detail}</li>
