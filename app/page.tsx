@@ -7,9 +7,21 @@ const current = [
 ];
 
 const selected = [
-  ['Guido', 'autonomous voice controlled wheelchair'],
-  ['Conduit', 'accessibility interface using EEG and CV'],
-  ['ZPM-TUNA', 'autonomous SWARM drones for dynamic evacuation'],
+  {
+    title: 'Guido',
+    description: 'autonomous voice controlled wheelchair',
+    href: '/projects/guido',
+  },
+  {
+    title: 'Conduit',
+    description: 'accessibility interface using EEG and CV',
+    href: '/projects/conduit',
+  },
+  {
+    title: 'ZPM-TUNA',
+    description: 'autonomous SWARM drones for dynamic evacuation',
+    href: '/projects/zpmtuna',
+  },
 ];
 
 export default function Home() {
@@ -34,12 +46,12 @@ export default function Home() {
         <section className="mt-10">
           <h2 className="font-mono text-sm text-[#778da9]">selected projects</h2>
           <ul className="mt-4 space-y-3 text-sm leading-6">
-            {selected.map(([title, description]) => (
-              <li key={title} className="grid gap-1 sm:grid-cols-[9rem_1fr]">
-                <Link href="/projects" className="font-medium text-[#f0ebd8] hover:text-[#778da9]">
-                  {title}
+            {selected.map((project) => (
+              <li key={project.title} className="grid gap-1 sm:grid-cols-[9rem_1fr]">
+                <Link href={project.href} className="font-medium text-[#f0ebd8] hover:text-[#778da9]">
+                  {project.title}
                 </Link>
-                <span className="break-words text-[#e0e1dd]/60">{description}</span>
+                <span className="break-words text-[#e0e1dd]/60">{project.description}</span>
               </li>
             ))}
           </ul>

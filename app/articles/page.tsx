@@ -167,7 +167,51 @@ const articles: Article[] = [
       },
     ],
   },
+  {title: 'spring recap',
+    date: 'may 2026',
+    tags: ['blog'],
+    description: 'in this, i share a recap of spring semester and my summer goals',
+    sections: [
+      {
+        heading: 'general recap',
+        paragraphs: [
+          'helo crew.. semester is over and wow this just flew by, i swear it was feburary like 2 days ago but i guess its may now. anywho. this is all that happened and what ill be talking about: knight hacks, hacking, research, other activites, and my plans for summer',
+        ],
+      },
+      {
+        heading: 'knight hacks',
+        paragraphs: [
+          'holy fuck so much happened.. jeez idk what i can even talk about. in my linkedin post i wrapped it up pretty well but general overview and stuff i couldnt fit in there: gbms 1,2,3,4: I was definitely my standout it was so packed to the point where people were outside the door. hype and aura moments... then sno tea was great. it was just a great start to the semester, 2 and 3 were forgettable but 4 was cool because apparently it was the first time weve had a sponsored gbm. so shoutout us? it was something that we really wanted to do and lowk jacked from gwc but were gonna keep that up. alot of my phiolosophy when it comes to leading is building a team that wants to do the job and that was a big part of this, bryan did all the communication and did his job great there. field day was tuff. we won kickball and had bum energy out. oh the RSO ceremony, that was okay. honestly alittle larpy but we did win and we got nominated for 11 different things so we were just standouts, i think it was really cool when people would walk up to us and be like oh i saw your reel or oh i like what you guys are doing that was so awesome. we dropped merch ($6500) that was super expensive. but it was definitely worth it and i would totally pay more. i saw the shirt in publix yesterday and that says enough LOL. pl was great too this year, we gave a budget for prizes at 2k and probably costed us maybe 2500 total completely worth we killed that and daniel did great, whole thing was smooth albiet one small challenge for the expo no leaks... ummm what else intern fair and team pictures i lowk have nothing to say about them i havent said i dont even remember the intern fair like that ngl LOL it FLEW by for me. the team pictures was chill tho alot it was hot as hell that day. ive never been to lake eola or downtown in general so it was nice to see its actually pretty chill.'
+        ],
+      },
+      {
+        heading: 'hacking',
+        paragraphs: [
+          'lowk insane sem.. we went to hacklytics first where we WON that was hype and aura moments. we actually had this dude who wore a treehacks shirt with the same name as our project and we saw him take a picture infront of our win LOL. no hate to him but i just thought it was funny. i definitely want to go to more prestigious school hacks i thought it was so funny watching knight hacks win like 6 times it has to be ragebait, i will say TS was expensive the food options were so expensive since they didnt serve SHIT i could eat, such a problem with these hacks i always have to order food. i feel like its not that hard to either accomodate or avoid nuts and seafood. also feed ur hackers, like food people be hella hungry. but i love them they were so nice to us and ex-kh so its ok. then we went to hackusf, where we won 10 out of 15 challenges... we wont most innovative which is basically 4th place. honestly i felt the anger of the crowd during closing when no usfers were winning, it was kinda sad ngl i hoped for more balanced winning but im NGL i was looking at the projects our teams were putting out and i was like wtf yall never do ts. THEY ALWAYS TROLLING BUT FOR SOME REASON THEY ALL BROUGHT OUT SOME INSANE SHIT. i feel like we wouldve won general if the floor wasnt carpet but maybe that just me... that was it for me but our teams went to LAHacks won, shoutout lewin and honoray kh jhoon.. they went to hackabull and won but not much i think. thats all'
+        ]
+      },
+      {
+        heading: 'research & academics',
+        paragraphs:[
+          'i was a terrible student this semester. i definitely want to try more to be a better student because it really isnt all that hard. its unnessecary pressure i could fix with like 2 extra hours a week LOL. the classes are so easy right now that it is almost too easy to procrastinate. its weird because i go through phases with academia. in highschool i was more like how i am now, then in community college i was so dialed i had a 4.0, now im back to late assignments sometimes and not really putting my best foot forward in that aspect. i think its temporary as last semester i was able to lock in for finals. but thats definitely in my plans going into fall. TO BE FAIR, i am a busy guy. but nothing some better planning cant fix which is great optics. lowk not too much to say cause its part of my summer plans but everythings going very smoothly, got some cool stuff lined up and i want to spend some summer expanding on it by making it tangible'
+        ]
+      },
+      {
+        heading: 'random activities',
+        paragraphs: [
+          'hmm, well my birthday and party passed, oh jeez.. IM SORRY FOR THE CHAOS to everyone involved.. we also went to disney for spring break, we made great food holy fuh. me so hungry.. that was a chill ahh break, think it was like me dylan fern carlos bryan leo kylie bowen. hopefully i didnt miss anyone but it was great that was honestly top 3 moments i needed that. then yesterday we had our team event which was chill, honestly those grills are fucking terrible. erm yea thats pretty much all. oh wait i hit emerald in siege LOL'
+        ]
+      },
+      {
+        heading: 'da future',
+        paragraphs: [
+          'well i dont like to plan with my internship, i do have to do that and ill be fulltime while im there, but i like having other objectives throughout the summer as extra bonus points. i think my list is pretty extensive and all over the place but i plan on refining it over the week, i have about two weeks until the fe and thats when everything starts again so thats good time to chill. for personal stuff: i want to spend more time with my family and friends, i think this semester especially ive really thought about how much i take them for granted sometimes. my family is extremely supportive and i tend to get caught up with all the stuff that happens, i want to be there for them too as i sometimes havent been so i will be going between home and palm bay alittle especially on weekends just to make some more time. as well as my friends, they are there for me through anything, even if i make dumb desicions they are still there, even when i dont message for weeks because im caught up in everything going on they are still there, and that speaks alot onto them and the people i surround myself by. im so grateful for them all and want to be there for them more. no more sentimental stuff tho. we signed up for premier on valorant, itll be my first playing "competively" in over 2 years LOL so that will be for the fun. I ALSO want to grind siege and get champion. idk i think itll be fun and siege has been the first game ive enjoyed in such a long time. in terms of work stuff i want to make sure im good for the FE so will be grinding that abit, want to crush out some projects (cant leak i dont want people jacking my ideas) but i got some REALLY cool stuff, ontop of that i want to talk more about the actual work in research esque stuff on here and resources, what i do isnt really well documented sometimes so i want to contribute in that aspect. me patrick and bryan potentially have a project that is also honestly super cool and we want to sell it so theres that. i want to contribute to oss, definitely ROS2 because im pretty familar at this point. and also some deep tech stuff like nix. wat else.. i wanna go to buccees. and then towards the end of summer ill start locking back in for season.. i wanna land a robotics unicorn next summer that i can go to for new grad after hopefully. this summer will determine alot of if i do or not. good internship i got for it, better projects, oss and showcasing of understanding i think will be a big. ive never been one to not dream big so lets see what i can cook up here. think thats pretty much it. oh also for personal i want to rennovate my time management systems they are outdated... which maybe ill make another post on. okay bai'
+        ]
+      }
+  ],
+}
 ];
+
 
 export default function ArticlesPage() {
   return (

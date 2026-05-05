@@ -84,6 +84,12 @@ function ProjectEntry({ project, priority = false }: { project: Project; priorit
             )}
           </div>
           <p className="mt-3 break-words text-[#e0e1dd]/75">{project.description}</p>
+          <Link
+            href={`/projects/${project.slug}`}
+            className="mt-4 inline-flex font-mono text-xs text-[#778da9] hover:text-[#f0ebd8]"
+          >
+            expand project -&gt;
+          </Link>
         </div>
       </div>
       <div className="sm:ml-[8rem]">

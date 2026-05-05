@@ -14,14 +14,14 @@ const experience: ExperienceItem[] = [
     title: 'software engineer intern',
     subtitle: 'incoming @ ???',
     tech: ['C++', 'ROS2', 'gazebo', 'NAV2'],
-    date: 'May 2026 - August 2026',
+    date: 'may 2026 - august 2026',
     description: 'cool autonomous stuff',
     details: ['making drone talk to eachother'],
   },
   {
     title: 'treasurer',
     subtitle: 'Knight Hacks',
-    date: 'Jan 2026 - Present',
+    date: 'jan 2026 - present',
     description: 'Actively managing the financials and operations of Knight Hacks, the largest technical organization at UCF',
     details: ['Led a 100-person team as Treasurer of Knight Hacks, UCF’s Largest student-run tech organization serving acommunity of 1500+ students',
     'Managed finances for a 501(c)(3) nonprofit, overseeing a $100k+ annual budget across sponsorships and operating expenses. Secured $90K+ in sponsorships from Fortune 500 companies to support Knight Hacks IX'],
@@ -30,7 +30,7 @@ const experience: ExperienceItem[] = [
     title: 'researcher',
     subtitle: 'Knights Scholars Research Program',
     tech: ['python', 'C++', 'ROS2', 'QEMU', 'LlamaGPT'],
-    date: 'Oct. 2025 - Present',
+    date: 'oct 2025 - present',
     description: 'Conducting research on security and fault tolerance of LLMs for embedded systems.',
     details: [
       'Conducted research on security and fault tolerance of LLMs for embedded systems, evaluating the impact of soft errors and adversarial attacks using real hardware and Gem5 simulation',
@@ -50,7 +50,7 @@ const experience: ExperienceItem[] = [
   {
     title: 'president',
     subtitle: 'Florida Elite Athletics',
-    date: 'Dec 2024 - Feb 2026',
+    date: 'dec 2024 - feb 2026',
     description: 'Help under served athletes around South Florida get the resources needed to succeed.',
     details: [
       'Help under served athletes around South Florida get the resources needed to succeed.',
