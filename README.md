@@ -36,3 +36,13 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 "# portfoliov1" 
 # portfoliov1
+
+## Writing Articles
+
+Articles live in `content/articles` as Markdown files. To start a new one:
+
+```bash
+npm run new:article -- "my article title"
+```
+
+Fill in the `description`, keep `published: true`, and write the post body in normal Markdown.
