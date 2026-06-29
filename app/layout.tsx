@@ -22,6 +22,13 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
+        <head>
+        <script
+            defer
+            src="https://cloud.umami.is/script.js"
+            data-website-id="b0bb5e65-0b53-4c19-86f6-1a08165c2e06"
+        ></script>
+        </head>
         <body className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning={true}>
         {children}
         <Analytics />
