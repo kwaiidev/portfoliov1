@@ -1,9 +1,9 @@
 ---
-title: "fast learning"
+title: "life lessons v0.0001"
 date: "2026-06-01"
-description: "in this, i ramble and talk about some of the stuff ive learned overtime"
+description: "maybe im schizo"
 tags: ["blog"]
-published: false
+published: true
 ---
 
 ## intro
