@@ -1,15 +1,50 @@
-import Link from 'next/link';
-import Image from 'next/image';
-import { notFound } from 'next/navigation';
-import { projects } from '../projects-data';
-import { getProjectBySlug, getProjectImages } from '../project-utils';
+import type { Metadata } from 'next';
+import { notFound, permanentRedirect } from 'next/navigation';
+import ContentPager from '@/app/components/long-form/ContentPager';
+import LongFormLayout from '@/app/components/long-form/LongFormLayout';
+import MarkdownContent from '@/app/components/long-form/MarkdownContent';
+import MediaGallery from '@/app/components/long-form/MediaGallery';
+import { extractTableOfContents } from '@/lib/markdown';
+import { getAllProjects, getProjectBySlug, getProjectNavigation } from '@/lib/projects';
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
-  return projects.map((project) => ({ slug: project.slug }));
+  return getAllProjects().flatMap((project) => (
+    [project.slug, ...project.aliases].map((slug) => ({ slug }))
+  ));
+}
+
+export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const project = getProjectBySlug(slug);
+
+  if (!project) {
+    return {};
+  }
+
+  return {
+    title: project.title,
+    description: project.summary,
+    alternates: {
+      canonical: `/projects/${project.slug}`,
+    },
+    openGraph: {
+      type: 'article',
+      title: `${project.title} | kwaii.dev`,
+      description: project.summary,
+      url: `/projects/${project.slug}`,
+      images: project.images[0] ? [{ url: project.images[0].src, alt: project.images[0].alt }] : undefined,
+    },
+    twitter: {
+      card: project.images[0] ? 'summary_large_image' : 'summary',
+      title: `${project.title} | kwaii.dev`,
+      description: project.summary,
+      images: project.images[0] ? [{ url: project.images[0].src, alt: project.images[0].alt }] : undefined,
+    },
+  };
 }
 
 export default async function ProjectDetailPage({ params }: ProjectPageProps) {
@@ -20,58 +55,47 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
     notFound();
   }
 
-  const images = getProjectImages(project.slug);
+  if (slug !== project.slug) {
+    permanentRedirect(`/projects/${project.slug}`);
+  }
+
+  const tableOfContents = extractTableOfContents(project.content);
+  const navigation = getProjectNavigation(project.slug);
+  const meta = [
+    ...(project.year ? [{ label: 'year', value: project.year }] : []),
+    ...(project.role ? [{ label: 'role', value: project.role }] : []),
+    ...(project.timeline ? [{ label: 'timeline', value: project.timeline }] : []),
+    ...(project.status ? [{ label: 'status', value: project.status }] : []),
+    { label: 'format', value: 'technical case study' },
+  ];
 
   return (
-    <main className="overflow-x-hidden bg-[#0d1b2a] px-5 pb-12 pt-28 text-[#e0e1dd] sm:px-8">
-      <section className="mx-auto w-full max-w-[20.5rem] sm:max-w-3xl">
-        <Link href="/projects" className="font-mono text-sm text-[#778da9] hover:text-[#f0ebd8]">
-          ../projects
-        </Link>
-        <h1 className="mt-10 text-4xl font-semibold text-[#f0ebd8] sm:text-5xl">{project.title}</h1>
-        <p className="mt-3 font-mono text-sm text-[#778da9]">{project.category}</p>
-        {project.award && (
-          <p className="mt-2 font-mono text-xs text-[#EFBF04]">{project.award}</p>
-        )}
-
-        <p className="mt-6 break-words text-sm leading-6 text-[#e0e1dd]/75">{project.description}</p>
-
-        <p className="mt-6 flex flex-wrap gap-x-3 gap-y-1 font-mono text-xs text-[#778da9]/80">
-          {project.tech.map((tech) => (
-            <span key={tech}>{tech}</span>
-          ))}
-        </p>
-
-        {images.length > 0 && (
-          <section className="mt-8">
-            <h2 className="font-mono text-sm text-[#778da9]">images</h2>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              {images.map((src) => (
-                <Image
-                  key={src}
-                  src={src}
-                  alt={`${project.title} project image`}
-                  width={1280}
-                  height={720}
-                  className="h-full w-full border border-[#415a77]/45 object-cover"
-                  style={{ objectPosition: project.imagePosition ?? 'center' }}
-                />
-              ))}
-            </div>
-          </section>
-        )}
-
-        <section className="mt-8 border-t border-[#415a77]/45 pt-6">
-          <h2 className="font-mono text-sm text-[#778da9]">build notes</h2>
-          <ul className="mt-4 space-y-2 text-sm leading-6 text-[#e0e1dd]/60">
-            {project.expandedDescription.map((item) => (
-              <li key={item} className="break-words">
-                - {item}
-              </li>
-            ))}
-          </ul>
-        </section>
-      </section>
-    </main>
+    <LongFormLayout
+      backHref="/#projects"
+      backLabel="all projects"
+      eyebrow={`project ${String(project.order).padStart(2, '0')}`}
+      title={project.title}
+      description={project.summary}
+      meta={meta}
+      tags={project.tech}
+      badge={project.award}
+      actions={project.links}
+      tableOfContents={tableOfContents}
+      lead={project.images.length > 0 ? <MediaGallery title={project.title} images={project.images} /> : undefined}
+      footer={(
+        <ContentPager
+          previous={navigation.previous ? {
+            title: navigation.previous.title,
+            href: `/projects/${navigation.previous.slug}`,
+          } : undefined}
+          next={navigation.next ? {
+            title: navigation.next.title,
+            href: `/projects/${navigation.next.slug}`,
+          } : undefined}
+        />
+      )}
+    >
+      <MarkdownContent content={project.content} />
+    </LongFormLayout>
   );
 }

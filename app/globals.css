@@ -1,22 +1,140 @@
-@import "tailwindcss";
-
-@theme inline {
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
 @layer base {
+  :root {
+    --background: #0d1b2a;
+    --background-deep: #081521;
+    --surface: #112335;
+    --surface-raised: #152a3e;
+    --text-strong: #f4efdc;
+    --text: #c8d2d6;
+    --text-muted: #8ea2b3;
+    --text-faint: #7b91a4;
+    --accent: #778da9;
+    --accent-dim: #5f7390;
+    --accent-ghost: rgba(119, 141, 169, 0.1);
+    --signal: #f0c75e;
+    --line: rgba(142, 162, 179, 0.22);
+    --line-strong: rgba(119, 141, 169, 0.46);
+    --site-width: 82rem;
+    --page-gutter: clamp(1.15rem, 4vw, 4rem);
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  ol,
+  ul,
+  dl,
+  dd,
+  figure,
+  blockquote {
+    margin: 0;
+  }
+
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
   html {
     scroll-behavior: smooth;
+    scroll-padding-top: 2rem;
+    background: var(--background);
   }
 
   body {
-    background: #0d1b2a;
-    color: #e0e1dd;
+    min-height: 100vh;
+    margin: 0;
+    background:
+      radial-gradient(circle at 88% -10%, rgba(85, 132, 148, 0.12), transparent 34rem),
+      linear-gradient(180deg, var(--background-deep), var(--background) 32rem);
+    color: var(--text);
     overflow-x: hidden;
+    font-family: var(--font-geist-sans), sans-serif;
+    -webkit-font-smoothing: antialiased;
   }
 
-  * {
-    @apply outline-none border-0;
+  a,
+  button,
+  input,
+  summary {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button,
+  input {
+    font: inherit;
+  }
+
+  button {
+    border: 0;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+  }
+
+  ::selection {
+    background: var(--accent);
+    color: var(--background-deep);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .skip-link {
+    position: fixed;
+    z-index: 100;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    background: var(--text-strong);
+    color: var(--background-deep);
+    font-family: var(--font-geist-sans), sans-serif;
+    font-size: 0.75rem;
+    text-decoration: none;
+    transform: translateY(-200%);
+    transition: transform 160ms ease;
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+    }
+
   }
 }

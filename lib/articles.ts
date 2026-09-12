@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import matter from 'gray-matter';
 
-export type Article = {
+type Article = {
   slug: string;
   title: string;
   date: string;
@@ -12,14 +12,6 @@ export type Article = {
 };
 
 const articlesRoot = join(process.cwd(), 'content', 'articles');
-
-function isMarkdownFile(fileName: string) {
-  return fileName.endsWith('.md');
-}
-
-function slugFromFileName(fileName: string) {
-  return fileName.replace(/\.md$/, '');
-}
 
 function isValidSlug(slug: string) {
   return /^[a-z0-9-]+$/.test(slug);
@@ -34,11 +26,25 @@ function toRequiredString(value: unknown, fieldName: string, slug: string) {
 }
 
 function toDateString(value: unknown, slug: string) {
-  if (value instanceof Date) {
-    return value.toISOString().slice(0, 10);
+  const date = value instanceof Date
+    ? value.toISOString().slice(0, 10)
+    : toRequiredString(value, 'date', slug);
+  const parts = getDateParts(date);
+
+  if (!parts) {
+    throw new Error(`Article "${slug}" has an invalid "date" field. Use YYYY-MM-DD.`);
   }
 
-  return toRequiredString(value, 'date', slug);
+  const parsed = new Date(Date.UTC(parts.year, parts.month - 1, parts.day));
+  const isExactDate = parsed.getUTCFullYear() === parts.year
+    && parsed.getUTCMonth() === parts.month - 1
+    && parsed.getUTCDate() === parts.day;
+
+  if (!isExactDate) {
+    throw new Error(`Article "${slug}" has an invalid calendar date: "${date}".`);
+  }
+
+  return date;
 }
 
 function toTags(value: unknown) {
@@ -97,16 +103,24 @@ export function formatArticleDate(date: string) {
   }).format(new Date(Date.UTC(parts.year, parts.month - 1, parts.day)));
 }
 
-export function getArticleSlugs() {
+function getArticleSlugs() {
   if (!existsSync(articlesRoot)) {
     return [];
   }
 
-  return readdirSync(articlesRoot, { withFileTypes: true })
+  const slugs = readdirSync(articlesRoot, { withFileTypes: true })
     .filter((entry) => entry.isFile())
     .map((entry) => entry.name)
-    .filter((fileName) => isMarkdownFile(fileName))
-    .map((fileName) => slugFromFileName(fileName));
+    .filter((fileName) => fileName.endsWith('.md'))
+    .map((fileName) => fileName.slice(0, -3));
+
+  const invalidSlug = slugs.find((slug) => !isValidSlug(slug));
+
+  if (invalidSlug) {
+    throw new Error(`Article filename creates an invalid slug: "${invalidSlug}".`);
+  }
+
+  return slugs;
 }
 
 export function getArticleBySlug(slug: string) {
@@ -123,7 +137,7 @@ export function getArticleBySlug(slug: string) {
   const file = readFileSync(filePath, 'utf8');
   const { data, content } = matter(file);
 
-  if (data.published === false) {
+  if (data.published !== true) {
     return undefined;
   }
 

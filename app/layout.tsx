@@ -1,22 +1,37 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+import { Geist } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer";
-import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
     subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-    title: "kwaiidev",
-    description: "Jason Sacerio is a third year computer science and math student at the University of Central Florida. He is a software engineer with a focus on low-level programming and system development. He is also the current Treasurer of Knight Hacks and Researcher at Knights Scholars Research Program.",
+    metadataBase: new URL("https://kwaii.dev"),
+    title: {
+        default: "jason sacerio",
+        template: "%s | kwaii.dev",
+    },
+    description: "hello! welcome to my portfolio, im a third year at UCF, 3x intern, and treasurer of knight hacks",
+    openGraph: {
+        type: "website",
+        siteName: "kwaii.dev",
+        title: "jason sacerio",
+        description: "hello! welcome to my portfolio, im a third year at UCF, 3x intern, and treasurer of knight hacks",
+        url: "https://kwaii.dev",
+    },
+    twitter: {
+        card: "summary",
+        title: "jason sacerio",
+        description: "hello! welcome to my portfolio, im a third year at UCF, 3x intern, and treasurer of knight hacks",
+    },
+};
+
+export const viewport: Viewport = {
+    colorScheme: "dark",
+    themeColor: "#0d1b2a",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -29,9 +44,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             data-website-id="b0bb5e65-0b53-4c19-86f6-1a08165c2e06"
         ></script>
         </head>
-        <body className={`${geistSans.variable} ${geistMono.variable}`} suppressHydrationWarning={true}>
+        <body className={geistSans.variable}>
+        <a href="#main-content" className="skip-link">skip to content</a>
         {children}
-        <Analytics />
         <Footer />
         </body>
         </html>

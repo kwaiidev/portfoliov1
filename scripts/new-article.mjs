@@ -32,9 +32,9 @@ const escapedTitle = title.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
 const template = `---
 title: "${escapedTitle}"
 date: "${today}"
-description: ""
+description: "Replace with a concise description."
 tags: ["blog"]
-published: true
+published: false
 ---
 
 ## intro

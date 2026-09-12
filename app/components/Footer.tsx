@@ -1,11 +1,12 @@
 import Link from 'next/link';
+import styles from './footer.module.css';
 
 const pageLinks = [
   ['home', '/'],
-  ['about', '/about'],
-  ['experience', '/experience'],
-  ['projects', '/projects'],
-  ['articles', '/articles'],
+  ['about', '/#about'],
+  ['experience', '/#experience'],
+  ['projects', '/#projects'],
+  ['articles', '/#articles'],
 ];
 
 const contactLinks = [
@@ -16,14 +17,14 @@ const contactLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0d1b2a] px-5 pb-16 text-[#e0e1dd] sm:px-8">
-      <section className="mx-auto w-full max-w-[20.5rem] border-t border-[#415a77]/45 pt-8 font-mono text-sm sm:max-w-3xl">
-        <div className="grid gap-8 sm:grid-cols-2">
+    <footer className={styles.footer}>
+      <section className={styles.inner}>
+        <div className={styles.grid}>
           <nav aria-label="footer navigation">
-            <h2 className="text-[#778da9]">pages</h2>
-            <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-[#e0e1dd]/75">
+            <h2>pages</h2>
+            <p>
               {pageLinks.map(([label, href]) => (
-                <Link key={href} href={href} className="hover:text-[#778da9]">
+                <Link key={href} href={href}>
                   {label}
                 </Link>
               ))}
@@ -31,15 +32,14 @@ export default function Footer() {
           </nav>
 
           <section>
-            <h2 className="text-[#778da9]">contact</h2>
-            <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-[#e0e1dd]/75">
+            <h2>contact</h2>
+            <p>
               {contactLinks.map(([label, href]) => (
                 <a
                   key={href}
                   href={href}
                   target={href.startsWith('http') ? '_blank' : undefined}
                   rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className="hover:text-[#778da9]"
                 >
                   {label}
                 </a>
