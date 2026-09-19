@@ -139,6 +139,13 @@
   line-height: 1.45;
 }
 
+.stack {
+  grid-column: 1 / -1;
+  color: var(--text-muted);
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 0.75rem;
+}
+
 .tagList {
   grid-column: 9 / -1;
   display: flex;
@@ -439,6 +446,11 @@
   height: auto;
   border: 1px solid var(--line);
   background: var(--surface);
+}
+
+.markdownImage[src$='.svg'] {
+  max-width: 25rem;
+  margin-inline: auto;
 }
 
 .contentFooter {

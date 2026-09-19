@@ -131,7 +131,7 @@ export default function Home() {
         <a href="#about" className={styles.scrollCue}>scroll  <span>↓</span></a>
       </section>
 
-      <section id="experience" className={styles.flowSection}>
+      <section id="experience" className={`${styles.flowSection} ${styles.experienceSection}`}>
         <header className={styles.sectionMarker}><h2>experience</h2></header>
         <div className={styles.sectionBody}><ExperienceTabs groups={experienceGroups} /></div>
       </section>

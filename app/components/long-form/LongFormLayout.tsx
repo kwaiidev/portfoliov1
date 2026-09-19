@@ -22,6 +22,7 @@ type LongFormLayoutProps = {
   description: string;
   meta?: LongFormMeta[];
   tags?: string[];
+  stack?: string[];
   badge?: string;
   actions?: LongFormAction[];
   tableOfContents: TableOfContentsItem[];
@@ -38,6 +39,7 @@ export default function LongFormLayout({
   description,
   meta = [],
   tags = [],
+  stack = [],
   badge,
   actions = [],
   tableOfContents,
@@ -89,6 +91,10 @@ export default function LongFormLayout({
                 </div>
               ))}
             </dl>
+          )}
+
+          {stack.length > 0 && (
+            <p className={styles.stack}>stack: {stack.join(', ')}</p>
           )}
 
           {tags.length > 0 && (

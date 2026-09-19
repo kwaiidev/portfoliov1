@@ -113,6 +113,9 @@
   line-height: 0.9;
 }
 
+.experienceSection { padding-top: clamp(1rem, 2vw, 1.75rem); }
+.experienceSection .sectionMarker h2 { margin-top: 0; }
+
 .sectionBody {
   width: min(100%, 64rem);
   margin-inline: auto;

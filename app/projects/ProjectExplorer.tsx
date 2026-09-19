@@ -109,7 +109,7 @@ function ProjectPreview({ project, imageIndex, onImageChange, id }: ProjectPrevi
         <div>
           <h3 id={headingId}>{project.title}</h3>
           <p className={styles.previewSummary}>{project.summary}</p>
-          <p className={styles.previewStack}>stack: {project.tech.slice(0, 3).join(' / ')}</p>
+          <p className={styles.previewStack}>stack: {project.tech.join(', ')}</p>
           {project.award && <p className={styles.previewAward}>award: {project.award}</p>}
         </div>
 
@@ -174,7 +174,7 @@ export default function ProjectExplorer({ projects }: { projects: ProjectSummary
                       <span className={styles.projectIndex}>{String(index + 1).padStart(2, '0')}</span>
                       <span className={styles.projectName}>{project.title}</span>
                       <span className={styles.projectSummary}>{project.summary}</span>
-                      <span className={styles.projectStack}>stack: {project.tech.slice(0, 3).join(' / ')}</span>
+                      <span className={styles.projectStack}>stack: {project.tech.join(', ')}</span>
                       {project.award && <span className={styles.projectAward}>award: {project.award}</span>}
                     </button>
 

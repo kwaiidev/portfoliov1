@@ -36,6 +36,9 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
       title: `${project.title} | kwaii.dev`,
       description: project.summary,
       url: `/projects/${project.slug}`,
+      publishedTime: project.date,
+      authors: ['Jason Sacerio'],
+      tags: project.tech,
       images: project.images[0] ? [{ url: project.images[0].src, alt: project.images[0].alt }] : undefined,
     },
     twitter: {
@@ -61,13 +64,6 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
 
   const tableOfContents = extractTableOfContents(project.content);
   const navigation = getProjectNavigation(project.slug);
-  const meta = [
-    ...(project.year ? [{ label: 'year', value: project.year }] : []),
-    ...(project.role ? [{ label: 'role', value: project.role }] : []),
-    ...(project.timeline ? [{ label: 'timeline', value: project.timeline }] : []),
-    ...(project.status ? [{ label: 'status', value: project.status }] : []),
-    { label: 'format', value: 'technical case study' },
-  ];
 
   return (
     <LongFormLayout
@@ -76,8 +72,7 @@ export default async function ProjectDetailPage({ params }: ProjectPageProps) {
       eyebrow={`project ${String(project.order).padStart(2, '0')}`}
       title={project.title}
       description={project.summary}
-      meta={meta}
-      tags={project.tech}
+      stack={project.tech}
       badge={project.award}
       actions={project.links}
       tableOfContents={tableOfContents}

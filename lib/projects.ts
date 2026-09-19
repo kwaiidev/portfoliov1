@@ -20,6 +20,7 @@ type Project = {
   slug: string;
   title: string;
   year?: string;
+  date?: string;
   role?: string;
   timeline?: string;
   status?: string;
@@ -192,6 +193,7 @@ function readProject(slug: string): Project | undefined {
     slug,
     title: toRequiredString(data.title, 'title', slug),
     year: toOptionalString(data.year),
+    date: toOptionalString(data.date),
     role: toOptionalString(data.role),
     timeline: toOptionalString(data.timeline),
     status: toOptionalString(data.status),
