@@ -22,9 +22,11 @@ const experienceGroups = [
   {
     label: 'professional',
     items: [
-      { title: 'software engineer intern', place: '???', date: 'may 2026 — august 2026', description: ['Reduced machine-control fault recovery time by 38% by building and integrating a real-time health monitoring and watchdog system for embedded safety controllers across multiple heavy-equipment platforms.',
-        'Improved cross-platform deployment reliability to 99.7% over 500+ field hours by developing C++/Rust hardware abstraction layers and CAN/J1939 interfaces that standardized communication across different machine manufacturers.',
-        'Cut embedded integration and debugging time by 45% by creating Python-based hardware-in-the-loop test automation covering drivers, RTOS tasks, communication faults, and degraded-connectivity scenarios before field deployment.'] },
+      { title: 'software engineer intern', place: 'Stealth Startup', date: 'may 2026 — august 2026', description: [
+        'Designed the ROS 2 middleware architecture connecting perception, localization, planning, and vehicle-control nodes across a multi-vehicle autonomous fleet. Standardized topics, services, actions, TF2 frames, namespaces, and launch configurations to provide consistent interfaces across vehicle platforms.',
+        'Tuned DDS QoS policies for high-rate LiDAR/camera streams and latency-sensitive localization/control topics, balancing reliability, queue depth, and bandwidth; reduced observed message drops by 31% under peak sensor load through QoS and executor configuration changes.',
+        'Built fleet-level diagnostics monitoring topic frequency, end-to-end latency, queue depth, node liveness, and TF2 availability, and implemented ROS 2 lifecycle-based startup/recovery for distributed autonomy nodes, reducing integration failure diagnosis time by 40% during vehicle testing.',
+      ] },
       { title: 'researcher', place: 'UCF', date: 'sept 2025 — present', description: [
         'Conducted research on security and fault tolerance of LLMs for embedded systems, evaluating 15+ attack scenarios across 6 hardware platforms using real hardware and Gem5 simulation.',
         'Analyzed 10+ mitigation strategies for LLM vulnerabilities, including memory bit-flip attacks and 8 novel embedded-specific attack vectors, across 6 embedded boards and mobile devices.',
