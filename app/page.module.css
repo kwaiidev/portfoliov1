@@ -142,6 +142,8 @@
 .experienceBullets { grid-column: 2 / -1; max-width: 55ch; color: var(--text-muted); line-height: 1.65; }
 .experienceBullets { margin: 0; padding-left: 1.1rem; list-style: square; }
 .experienceBullets li + li { margin-top: 0.45rem; }
+.experienceStories { margin-top: 1.5rem; color: var(--text-muted); line-height: 1.65; }
+.experienceStories a { color: var(--accent); text-underline-offset: 0.2em; }
 
 .articleList > li { border-bottom: 1px solid var(--line); }
 .articleList a { display: grid; grid-template-columns: 2rem minmax(0, 1fr) 2rem; gap: 1.5rem; padding: 2rem 0; color: inherit; text-decoration: none; }

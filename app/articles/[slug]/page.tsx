@@ -21,6 +21,10 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     return {};
   }
 
+  const knightHacksImage = ['becoming-treasurer', 'khviii-deepdive'].includes(article.slug)
+    ? [{ url: '/cachedimage.png', width: 1200, height: 630, alt: 'Knight Hacks team posing together at an event' }]
+    : undefined;
+
   return {
     title: article.title,
     description: article.description,
@@ -29,17 +33,19 @@ export async function generateMetadata({ params }: ArticlePageProps): Promise<Me
     },
     openGraph: {
       type: 'article',
-      title: `${article.title} | kwaii.dev`,
+      title: `${article.title} | Jason Sacerio`,
       description: article.description,
       url: `/articles/${article.slug}`,
       publishedTime: article.date,
       authors: ['Jason Sacerio'],
       tags: article.tags,
+      images: knightHacksImage,
     },
     twitter: {
-      card: 'summary',
-      title: `${article.title} | kwaii.dev`,
+      card: knightHacksImage ? 'summary_large_image' : 'summary',
+      title: `${article.title} | Jason Sacerio`,
       description: article.description,
+      images: knightHacksImage,
     },
   };
 }
@@ -59,8 +65,12 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
     headline: article.title,
     description: article.description,
     datePublished: article.date,
+    image: ['becoming-treasurer', 'khviii-deepdive'].includes(article.slug)
+      ? 'https://kwaii.dev/cachedimage.png'
+      : undefined,
     author: {
       '@type': 'Person',
+      '@id': 'https://kwaii.dev/#person',
       name: 'Jason Sacerio',
       url: 'https://kwaii.dev',
     },

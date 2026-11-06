@@ -266,7 +266,8 @@
 .blueprintNote { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; }
 
 .blueprintTitle {
-  grid-column: 1;
+  grid-column: 1 / -1;
+  grid-row: 2;
   align-self: end;
   color: var(--text-strong);
   font-family: var(--font-geist-sans), sans-serif;
@@ -278,7 +279,7 @@
 
 .blueprint ul {
   grid-column: 2;
-  grid-row: 1 / span 2;
+  grid-row: 1;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -297,6 +298,7 @@
 }
 
 .previewCopy h3 {
+  grid-column: 1 / -1;
   color: var(--text-strong);
   font-size: clamp(2rem, 4vw, 4rem);
   font-weight: 560;
@@ -304,7 +306,7 @@
   line-height: 0.95;
 }
 
-.previewSummary { margin-top: 1.25rem; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; }
+.previewSummary { color: var(--text-muted); font-size: 0.88rem; line-height: 1.6; }
 .previewStack { margin-top: 1.25rem; }
 .previewAward { margin-top: 0.75rem; color: var(--signal); font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; line-height: 1.5; }
 
@@ -386,7 +388,7 @@
   .previewHighlights { padding-top: 1rem; border-top: 1px solid var(--line); }
   .previewFooter { justify-content: start; }
   .mediaStage[data-has-image='false'] { aspect-ratio: 4 / 3; }
-  .blueprintTitle { font-size: 2.4rem; }
+  .blueprintTitle { font-size: clamp(1.5rem, 7vw, 2.4rem); }
 }
 
 @media (prefers-reduced-motion: reduce) {

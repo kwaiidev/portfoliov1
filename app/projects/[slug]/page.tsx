@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     },
     openGraph: {
       type: 'article',
-      title: `${project.title} | kwaii.dev`,
+      title: `${project.title} | Jason Sacerio`,
       description: project.summary,
       url: `/projects/${project.slug}`,
       publishedTime: project.date,
@@ -43,7 +43,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
     },
     twitter: {
       card: project.images[0] ? 'summary_large_image' : 'summary',
-      title: `${project.title} | kwaii.dev`,
+      title: `${project.title} | Jason Sacerio`,
       description: project.summary,
       images: project.images[0] ? [{ url: project.images[0].src, alt: project.images[0].alt }] : undefined,
     },

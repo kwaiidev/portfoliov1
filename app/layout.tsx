@@ -11,21 +11,30 @@ const geistSans = Geist({
 export const metadata: Metadata = {
     metadataBase: new URL("https://kwaii.dev"),
     title: {
-        default: "jason sacerio",
-        template: "%s | kwaii.dev",
+        default: "Jason Sacerio | Software Engineer & Knight Hacks Treasurer",
+        template: "%s | Jason Sacerio",
     },
-    description: "hello! welcome to my portfolio, im a third year at UCF, 3x intern, and treasurer of knight hacks",
+    description: "Jason Sacerio is a UCF computer science and math student, software engineer, and Knight Hacks treasurer. Explore his robotics projects, hackathon work, and writing.",
+    authors: [{ name: "Jason Sacerio", url: "https://kwaii.dev" }],
+    creator: "Jason Sacerio",
+    robots: {
+        index: true,
+        follow: true,
+        googleBot: { index: true, follow: true, 'max-image-preview': 'large', 'max-snippet': -1 },
+    },
     openGraph: {
         type: "website",
-        siteName: "kwaii.dev",
-        title: "jason sacerio",
-        description: "hello! welcome to my portfolio, im a third year at UCF, 3x intern, and treasurer of knight hacks",
-        url: "https://kwaii.dev",
+        siteName: "Jason Sacerio",
+        title: "Jason Sacerio | Software Engineer & Knight Hacks Treasurer",
+        description: "UCF student, software engineer, and Knight Hacks treasurer. Robotics projects, hackathon work, and writing by Jason Sacerio.",
+        url: "https://kwaii.dev/",
+        images: [{ url: "/cachedImage.png", width: 1200, height: 630, alt: "Knight Hacks team posing together at an event" }],
     },
     twitter: {
-        card: "summary",
-        title: "jason sacerio",
-        description: "hello! welcome to my portfolio, im a third year at UCF, 3x intern, and treasurer of knight hacks",
+        card: "summary_large_image",
+        title: "Jason Sacerio | Software Engineer & Knight Hacks Treasurer",
+        description: "UCF student, software engineer, and Knight Hacks treasurer. Robotics projects, hackathon work, and writing by Jason Sacerio.",
+        images: [{ url: "/cachedImage.png", alt: "Knight Hacks team posing together at an event" }],
     },
 };
 

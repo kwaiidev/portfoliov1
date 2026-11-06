@@ -1,8 +1,8 @@
 ---
 title: "Becoming Treasurer of Knight Hacks"
 date: "2026-02-01"
-description: "in this post i'll be talking about my time in knight hacks to present"
-tags: ["blog"]
+description: "How Jason Sacerio joined Knight Hacks at UCF, built connections through Kickstart and Knight Hacks VIII, and became the organization's treasurer."
+tags: ["Knight Hacks", "UCF", "hackathons"]
 published: true
 ---
 

@@ -106,8 +106,8 @@ function ProjectPreview({ project, imageIndex, onImageChange, id }: ProjectPrevi
       )}
 
       <div className={styles.previewCopy}>
+        <h3 id={headingId}>{project.title}</h3>
         <div>
-          <h3 id={headingId}>{project.title}</h3>
           <p className={styles.previewSummary}>{project.summary}</p>
           <p className={styles.previewStack}>stack: {project.tech.join(', ')}</p>
           {project.award && <p className={styles.previewAward}>award: {project.award}</p>}

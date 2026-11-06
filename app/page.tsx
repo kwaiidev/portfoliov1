@@ -15,13 +15,16 @@ export const metadata: Metadata = {
 const notes = [
   ['school', 'cs + math @ UCF'],
   ['focus', 'systems programming, robotics'],
-  ['current', 'treasurer @ Knight Hacks'],
+  ['current', 'swe intern @ encompass, treasurer @ Knight Hacks'],
 ];
 
 const experienceGroups = [
   {
     label: 'professional',
     items: [
+        { title: 'software engineer intern', place: 'Encompass', date: 'november 2026 — present', description: [
+            'stay tuned'
+        ] },
       { title: 'software engineer intern', place: 'Stealth Startup', date: 'may 2026 — august 2026', description: [
         'Designed the ROS 2 middleware architecture connecting perception, localization, planning, and vehicle-control nodes across a multi-vehicle autonomous fleet. Standardized topics, services, actions, TF2 frames, namespaces, and launch configurations to provide consistent interfaces across vehicle platforms.',
         'Tuned DDS QoS policies for high-rate LiDAR/camera streams and latency-sensitive localization/control topics, balancing reliability, queue depth, and bandwidth; reduced observed message drops by 31% under peak sensor load through QoS and executor configuration changes.',
@@ -47,10 +50,22 @@ const experienceGroups = [
       { title: 'treasurer', place: 'Knight Hacks', date: 'jan 2026 — present', description: [
         'Led a 100-person team as Treasurer of Knight Hacks, UCF’s largest student-run tech organization serving a community of 1,500+ students. Won best event at the UCF RSO Ceremony 2026 and was nominated for 11 other awards.',
         'Managed finances for a 501(c)(3) nonprofit, overseeing a $100k+ annual budget across sponsorships and operating expenses. Secured $90K+ in sponsorships from Fortune 500 companies to support Knight Hacks IX.',
+        'Hosted Knight Hacks IX, a 1100+ 36 hour hackathon with 300k+ in prizes with over 20+ sponsors and partners. Successfully growing the organization since taking office.'
       ] },
-      { title: 'president', place: 'Florida Elite Athletics', date: 'dec 2024 — feb 2026', description: ['Helping underserved athletes across South Florida access the resources they need.'] },
-      { title: 'founder', place: 'jtutors', date: 'sept 2024 — present', description: ['Leading a tutoring team that has delivered measurable results for more than 62 students.'] },
-      { title: 'division lead', place: 'MDC eSports', date: 'jan 2023 — dec 2023', description: ['Led a 12-person team from unranked to national recognition.'] },
+      { title: 'president', place: 'Florida Elite Athletics', date: 'dec 2024 — feb 2026', description: [
+          'Led an initiative to help under represented youth football teams in South Florida',
+          'Coordinated and negotiated financial backing of 4 teams by companies such as Wawa, BankUnited, and TropicSupply',
+          'Exposed 30+ young athletes to philanthropy by hosting collaborations with nonprofits such as SOS Childrens Village',
+          'Cohosted a tournament with 5 age divisions and 20+ teams, with over 300 attendees.'] },
+      { title: 'founder', place: 'jtutors', date: 'sept 2024 — may 2026', description: [
+          'Led team of 3 that assisted 62+ clients in SAT math prep',
+          'Built learning system that saw an average of 52% increase in SAT score over 2 attempts.',
+          'Generated stable 5 figures each year in operation to become profitable.'] },
+      { title: 'division lead', place: 'MDC eSports', date: 'jan 2023 — dec 2023', description: [
+          'Led a 12-person team from unranked to Top 200 in the North American Region',
+          'Built talent recruiting pipeline to consistently bring in Top 500 Nationwide talent into program',
+          'Won 10+ tournaments acting as ingame leader, coordinating strategy, pre-game prep, micro and macro management in game, winning 5 figures in earnings, becoming profitable',
+          'Built talent extraction system that provided opportunities to teammates in pro level play, successfully placing 4 members in professional play'] },
     ],
   },
 ];
@@ -61,6 +76,38 @@ const contactNavigation = [
   ['linkedin', 'https://www.linkedin.com/in/sacerio417/'],
   ['resume', '/resume.pdf'],
 ];
+
+const profileJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://kwaii.dev/#website',
+      name: 'Jason Sacerio',
+      alternateName: 'kwaii.dev',
+      url: 'https://kwaii.dev/',
+    },
+    {
+      '@type': 'ProfilePage',
+      '@id': 'https://kwaii.dev/#profile',
+      url: 'https://kwaii.dev/',
+      mainEntity: {
+        '@type': 'Person',
+        '@id': 'https://kwaii.dev/#person',
+        name: 'Jason Sacerio',
+        alternateName: 'kwaii',
+        description: 'UCF computer science and math student, software engineer, and Knight Hacks treasurer.',
+        url: 'https://kwaii.dev/',
+        sameAs: [
+          'https://github.com/kwaiidev',
+          'https://www.linkedin.com/in/sacerio417/',
+        ],
+        memberOf: { '@type': 'Organization', name: 'Knight Hacks' },
+        knowsAbout: ['autonomous robotics', 'ROS 2', 'systems programming'],
+      },
+    },
+  ],
+}).replace(/</g, '\\u003c');
 
 function ContactIcon({ label }: { label: string }) {
   if (label === 'github') {
@@ -85,6 +132,7 @@ export default function Home() {
 
   return (
     <main id="main-content" className={styles.page}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: profileJsonLd }} />
       <nav className={styles.navigation} aria-label="Page sections">
         <Link href="#home" className={styles.wordmark}>JS</Link>
         <div>
@@ -123,7 +171,7 @@ export default function Home() {
           </div>
           <div id="about" className={styles.heroAbout}>
             <p className={styles.heroAboutCopy}>Hello, I am a third year at UCF CECS studying computer science and math. My passion is around building and turning silly ideas we make on the spot into cool products.</p>
-            <p className={styles.heroAboutCopy}>Most of my work revolves around autonomous robotics, systems programming. I have had three internships and am the current Treasurer of Knight Hacks.</p>
+            <p className={styles.heroAboutCopy}>I work on autonomous robotics and systems programming. I have held four software engineering internships and serve as Treasurer of Knight Hacks, UCF&apos;s student-run hackathon organization.</p>
             <p className={styles.heroAboutCopy}>For fun i like fishing, factory sims, and whatever random adventure i pick up next ;)</p>
             <dl className={styles.notes}>
               {notes.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
@@ -135,7 +183,15 @@ export default function Home() {
 
       <section id="experience" className={`${styles.flowSection} ${styles.experienceSection}`}>
         <header className={styles.sectionMarker}><h2>experience</h2></header>
-        <div className={styles.sectionBody}><ExperienceTabs groups={experienceGroups} /></div>
+        <div className={styles.sectionBody}>
+          <ExperienceTabs groups={experienceGroups} />
+          <p className={styles.experienceStories}>
+            As Knight Hacks treasurer, I helped host Knight Hacks IX, a 36-hour hackathon with more than 1,100 attendees and 20 sponsors and partners. Read about{' '}
+            <Link href="/articles/becoming-treasurer">how I became treasurer</Link>,{' '}
+            <Link href="/articles/khviii-deepdive">building ZPM-TUNA at Knight Hacks VIII</Link>, and{' '}
+            <Link href="/projects/zpm-tuna">the ZPM-TUNA technical case study</Link>.
+          </p>
+        </div>
       </section>
 
       <section id="projects" className={`${styles.flowSection} ${styles.projectsSection}`}>

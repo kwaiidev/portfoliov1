@@ -1,8 +1,8 @@
 ---
-title: "KHVIII - a deepdive on my experience"
+title: "Knight Hacks VIII: ZPM-TUNA and the Pheratech Win"
 date: "2025-10-01"
-description: "in this post, i share my experiences while building ZPM-TUNA, winning pheratechs challenge, everything."
-tags: ["blog"]
+description: "Jason Sacerio's first-hand story of building ZPM-TUNA at Knight Hacks VIII, pivoting from robot hardware to simulation, and winning Pheratech's challenge."
+tags: ["Knight Hacks VIII", "ZPM-TUNA", "ROS 2"]
 published: true
 ---
 
