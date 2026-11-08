@@ -5,6 +5,8 @@ import MarkdownContent from '@/app/components/long-form/MarkdownContent';
 import { formatArticleDate, getAllArticles, getArticleBySlug } from '@/lib/articles';
 import { extractTableOfContents } from '@/lib/markdown';
 
+export const dynamicParams = false;
+
 type ArticlePageProps = {
   params: Promise<{ slug: string }>;
 };

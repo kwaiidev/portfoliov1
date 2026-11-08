@@ -2,6 +2,9 @@ import type { NextConfig } from "next";
 import path from "path";
 
 const nextConfig: NextConfig = {
+  images: {
+    localPatterns: [{ pathname: '/projects/**', search: '' }],
+  },
   async headers() {
     return [{
       source: '/:path*',

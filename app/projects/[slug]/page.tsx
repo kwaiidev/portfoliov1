@@ -7,6 +7,8 @@ import MediaGallery from '@/app/components/long-form/MediaGallery';
 import { extractTableOfContents } from '@/lib/markdown';
 import { getAllProjects, getProjectBySlug, getProjectNavigation } from '@/lib/projects';
 
+export const dynamicParams = false;
+
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
 };
